@@ -43,8 +43,18 @@ Your TAs
 
 .. rst-class:: center large
 
-| Ben Friedland
-| @ben_friedland
+| Henry Howes
+| @henrykh
+
+| Joel Stanner
+| @joelstanner
+
+| Denise Barnes
+| @finddeniseonline
+
+| Jeff Mendiola
+| @jwmendio
+
 
 How This Fits into CodeFellows
 ----------------------------
@@ -100,14 +110,22 @@ Class Meetings
 
 * Twice a week for 4 weeks
 * 8 total class sessions
-* Mondays and Wednesdays, 7-9pm 
+* Mondays and Wednesdays, 7-9pm
+* The "Easy"
+
+Office Hours
+-------------
+
+* 6pm before class, in the Easy
+* Instructor + all TAs will be here
+* Also by appointment with any TA
 
 Homework
 -------------
 
 * 2-4 homework tasks per class session.
-* Overall, about 25 homework tasks.
-* Worth 5 points each.
+* Overall, about 20 homework tasks.
+* Worth 5-10 points each.
 
 Rubric:
 
@@ -124,9 +142,9 @@ Grading Policy
 In order to pass the class:
 
 * Attend at least 6 out of 8 classes.
-* Score 80% of the points on each assigned homework task.
-* You can resubmit to get 4/5 points.
-* Late homework will be accepted up to 1 week after the class has ended.
+* Score 85% of the points in the class total.
+* You can resubmit to get more points.
+* Late homework will be accepted up to 1 week after the class has ended (July 15)
 
 Intense, Fast-paced
 ---------------
@@ -144,6 +162,14 @@ Who are you?
   Let's go around and introduce ourselves.
 
 
+Teams
+-------------
+
+.. rst-class:: center large
+
+  Let's split the class up into 3 teams
+
+
 Course Materials Online
 =======================
 
@@ -155,7 +181,7 @@ GitHub
 There are two repositories in GitHub you will want to bookmark:
 
 Student Homework Repository:
-  https://github.com/codefellows/sea-c34-python
+  https://github.com/codefellows/sea-c42-python
 
   Fork this repository to your own github account and do homework there.
 
@@ -166,7 +192,7 @@ Course Materials Repository:
   assignments
 
   A rendered HTML copy of all these class materials may be found online at
-  http://codefellows.github.io/sea-c34-python
+  http://codefellows.github.io/sea-c42-python
 
 Canvas
 ------
@@ -174,7 +200,7 @@ Canvas
 We will be using Canvas to track your homework submission.  Grades will be
 entered here as well:
 
-https://canvas.instructure.com/courses/919974
+http://canvas.instructure.com/courses/939488
 
 
 Elsewhere
@@ -185,14 +211,14 @@ Class email list:
   announcements. Please make sure that you are receiving the messages sent to
   this list:
 
-  sea-c34@codefellows.com
+  sea-c42@codefellows.com
 
 Class `Slack <https://codefellows.slack.com>`_ Channel:
   The student repository README contains a link to the class chatroom. You can
   sign into the `Codefellow Slack team <https://codefellows.slack.com>` website
   or you can download the desktop client for your OS.
 
-  Once you're signed in, join the `#sea-c34-python` channel.
+  Once you're signed in, join the `#sea-c42` channel.
 
   This is the official communication medium for the class, and where announcements will be made.
 
@@ -331,8 +357,9 @@ Python 3.x ("py3k")
 
 .. nextslide::
 
-This class uses Python 2.7 but makes use of many
-important Python 3.x changes (backported)
+This class uses Python 3.x (3.4 is the latest as of this writing)
+but we will point out the minor differences with Python 2.7, which
+you will see in the wild.
 
 .. rst-class:: build
 
@@ -356,13 +383,13 @@ Other Reasons Why Python is Awesome
 
 Keep your eye on the prize!
 
-* Built-in data types like lists, dictionaries, tuples that access simply by typing
-the right grouping symbols! `[] {} ()`
+* Built-in data types like lists, dictionaries, tuples that access simply by typing the right grouping symbols! `[] {} ()`
 * Its father, Guido van Rossum, still hearts it, actively guides its development,
 and tweets about how awesome it is.
 * It is named after Monty Python, but it also enables a lot of snake puns.
 * Short, succinct metaphors and a can-do attitude
 * Easy to experiment and play with. Open the interpreter, start messing around.
+
 Your computer is your own laboratory or viewport into exploring a virtual world.
 
 Introduction to Your Environment
@@ -396,7 +423,7 @@ I suggest running through the **cli** tutorial at "learn code the hard way":
 
 You can also read the materials from the Code Fellows Unix & Git workshop:
 
-`http://cewing.github.io/cf-uge`_
+`http://github.com/codefellows/sea-w29`_
 
 .. _http://cewing.github.io/cf-uge: http://cewing.github.io/cf-uge
 
@@ -420,8 +447,8 @@ You see it when you type ``python`` at the command line:
 
 .. code-block:: pycon
 
-    $ python
-    Python 2.7.5 (default, Aug 25 2013, 00:04:04)
+    $ python3
+    Python 3.4.3 (default, Jun  1 2015, 09:58:35)
     [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
@@ -574,7 +601,7 @@ We will take the time here in class to get this going.
 This helps to ensure that you will be able to work.
 
 
-Step 1: Python 2.7
+Step 1: Python 3.4
 ------------------
 
 .. rst-class:: large
@@ -584,7 +611,7 @@ You have this already, right?
 .. code-block:: bash
 
     $ python
-    Python 2.7.5 (default, Aug 25 2013, 00:04:04)
+    Python 3.4.3 (default, Jun  1 2015, 09:58:35)
     [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
     Type "help", "copyright", "credits" or "license" for more information.
     >>> ^D
@@ -605,16 +632,14 @@ Sometimes you need a bit more.
 
 Pip allows you to install Python packages to expand your system.
 
-You install it by downloading and then executing an installer script:
+pip comes preinstalled with Python 3.4.
+
+You can check to see if you have it installed by typing:
 
 .. code-block:: bash
 
-    $ curl -O https://bootstrap.pypa.io/get-pip.py
-    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-    100 1309k  100 1309k    0     0   449k      0  0:00:02  0:00:02 --:--:--  449k
-
-    $ python get-pip.py
+    $ pip --version
+    pip 7.0.3 from /usr/local/lib/python3.4/site-packages (python 3.4)
 
 (or go to: http://pip.readthedocs.org/en/latest/installing.html)
 
@@ -655,7 +680,7 @@ If you want to install it, here are some notes:
 `Intro to VirtualEnv <./supplements/virtualenv.html>`_
 
 
-Step 4: Clone Class Repository
+Step 4: Fork Class Repository
 ------------------------------
 
 `GitHub <www.github.com>`_ is an industry-standard system for collaboration on
@@ -669,7 +694,7 @@ Next, you'll make a copy of the class repository using ``git``.
 
 The canonical copy is in the CodeFellows organization on GitHub:
 
-https://github.com/codefellows/sea-c34-python
+https://github.com/codefellows/sea-c42-python
 
 Open that URL, and click on the *Fork* button at the top right corner.
 
@@ -684,7 +709,7 @@ At your command line, run the following commands:
 .. code-block:: bash
 
     $ cd your_working_directory_for_the_class
-    $ git clone https://github.com/<yourname>/sea-c34-python.git
+    $ git clone https://github.com/<yourname>/sea-c42-python.git
 
 (you can copy and paste that link from the gitHub page)
 
@@ -692,7 +717,7 @@ If you have an SSH key set up for gitHub, you'll want to do this instead:
 
 .. code-block:: bash
 
-    git@github.com:<yourname>/sea-c34-python.git
+    git@github.com:<yourname>/sea-c42-python.git
 
 **Remember**, <yourname> should be replaced by your github account name.
 
@@ -703,7 +728,7 @@ Remember our puzzle?
 Let's go into our recently cloned class repo and see some starter code.
 
 .. code-block:: bash
-    
+
     cd examples/session01
     python hello.py
 
@@ -1820,10 +1845,12 @@ Homework
 
 .. rst-class:: center large
 
-    Three Tasks due by Wednesday
+    Three Tasks due by Wednesday, check them out on Canvas.
 
-`Homework Task 1 <./homework/task_1.html>`_
+Homework Task 1: Python Pre-work
 
-`Homework Task 2 <./homework/task_2.html>`_
+Homework Task 2: Style Checking
 
-`Homework Task 3 <./homework/task_3.html>`_
+Homework Task 3: Gitting To Know You
+
+Homework Task 4: Break These Functions
