@@ -3,7 +3,7 @@
    hieroglyph-quickstart on Wed Apr  2 18:42:06 2014.
 
 *******************************
-Session Seven: Testing, More OO
+Session Seven (Tentative): Testing, More OO
 *******************************
 
 .. rst-class:: centered
@@ -13,6 +13,12 @@ Session Seven: Testing, More OO
 | Properties,
 | Class and Static Methods,
 | Special (Magic) Methods
+
+Subject to Change
+================
+
+This material is subject to change before
+Session Seven on July 6, 2015.
 
 
 Review/Questions

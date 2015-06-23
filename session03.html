@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Code Fellows F2 Python, March-April 2015" href="index.html" />
-    <link rel="next" title="Session Four: Dictionaries, Sets, Exceptions, and Files" href="session04.html" />
-    <link rel="prev" title="Session Two: Functions, Booleans and Modules" href="session02.html" />
+    <link rel="next" title="Session Four (Tentative): Dictionaries, Sets, Exceptions, and Files" href="session04.html" />
+    <link rel="prev" title="Session Two: Functions and Booleans" href="session02.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -50,10 +50,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="session04.html" title="Session Four: Dictionaries, Sets, Exceptions, and Files"
+          <a href="session04.html" title="Session Four (Tentative): Dictionaries, Sets, Exceptions, and Files"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="session02.html" title="Session Two: Functions, Booleans and Modules"
+          <a href="session02.html" title="Session Two: Functions and Booleans"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">F2 Python</a> &raquo;</li> 
       </ul>
@@ -72,19 +72,322 @@
 <h3>Review of Previous Session<a class="headerlink" href="#review-of-previous-session" title="Permalink to this headline">¶</a></h3>
 <ul class="build simple">
 <li>Functions</li>
-<li>Booleans</li>
-<li>Modules</li>
+<li>Parameters</li>
+<li>Positional, Keyword Parameters</li>
+<li>Default/Optional Parameters</li>
 </ul>
 </div>
-<div class="section" id="corrections">
-<h3>Corrections<a class="headerlink" href="#corrections" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="unix-git-workshop-this-saturday">
+<h2>Unix &amp; Git Workshop This Saturday<a class="headerlink" href="#unix-git-workshop-this-saturday" title="Permalink to this headline">¶</a></h2>
+<p>This is a vital pre-requisite for the current course!
+I taught the previous two workshops in Seattle,
+so I&#8217;ll know whether you passed it or not :]</p>
+<div class="line-block">
+<div class="line">Unix &amp; Git For Everyone Workshop</div>
+<div class="line">This Saturday, 27 June 2015</div>
+<div class="line">9am - 5pm</div>
+<div class="line"><a class="reference external" href="https://www.codefellows.org/class-calendar#sea-w30">https://www.codefellows.org/class-calendar#sea-w30</a></div>
+<div class="line">Register online</div>
+</div>
+</div>
+<div class="section" id="today-s-agenda">
+<h2>Today&#8217;s Agenda<a class="headerlink" href="#today-s-agenda" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>line breaks don&#8217;t end a block</li>
-<li>squirrel party example</li>
-<li>unicode hello world</li>
-<li>stepping through code</li>
-<li>linter</li>
+<li>Review Homework</li>
+<li>Substitution of Return Values</li>
+<li>Recursion</li>
+<li>Booleans</li>
+<li>Modules</li>
+<li>Assert Statements</li>
+<li>Sequences</li>
+<li></li>
+<li>Strings and Formatting</li>
 </ul>
+</div>
+<div class="section" id="timewise">
+<h2>Timewise<a class="headerlink" href="#timewise" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>7:00 Review,</li>
+<li>7:30 Pair programming</li>
+<li>8:00 New material:</li>
+<li>8:30 Go over Homeworks 8 and 9</li>
+</ul>
+</div>
+<div class="section" id="substitution-of-return-values">
+<h2>Substitution of Return Values<a class="headerlink" href="#substitution-of-return-values" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Function calls are substituted for their return values</li>
+<li>Function calls can be included in expressions</li>
+<li>Function calls can be nested</li>
+</ul>
+</div>
+<div class="section" id="recursion">
+<h2>Recursion<a class="headerlink" href="#recursion" title="Permalink to this headline">¶</a></h2>
+<p>[Demo of Fibonacci Sequence]</p>
+</div>
+<div class="section" id="code-structure-modules-and-namespaces">
+<h2>Code Structure, Modules, and Namespaces<a class="headerlink" href="#code-structure-modules-and-namespaces" title="Permalink to this headline">¶</a></h2>
+<p class="center large">Scopes within scopes, attributes within attributes</p>
+<div class="section" id="module-puzzle">
+<h3>Module Puzzle<a class="headerlink" href="#module-puzzle" title="Permalink to this headline">¶</a></h3>
+<p>Write a module (file) called <cite>mystery.py</cite> with a function
+inside that solves one of the CodingBat exercises from
+before:</p>
+<p><a class="reference download internal" href="_downloads/codingbat.rst"><tt class="xref download docutils literal"><span class="pre">codingbat.rst</span></tt></a></p>
+<p>Be sure to write a good docstring for your function describing
+how to use it, like this example.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">square_root</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the square root of a number.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        n: the number to get the square root of.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        the square root of n.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Include a check to see if the module is being run,
+or it is being imported.</p>
+<p>If it is being run, execute some test code that
+calls your function.</p>
+<p>Remember, Do These Steps</p>
+<ul class="simple">
+<li>Read through the puzzle for that section.</li>
+<li>Pick a partner. Describe what your goal is.</li>
+<li>Read through the section <cite>Code Structure, Modules, Namespaces</cite>. Try typing any code you see in <cite>ipython</cite> or <cite>python</cite></li>
+<li>Come up with three questions as you are reading with your partner.</li>
+<li>We&#8217;ll come around and help you.</li>
+<li>We&#8217;ll regroup and you&#8217;ll teach me the slides.</li>
+<li>We&#8217;ll solve the puzzle together.</li>
+</ul>
+</div>
+<div class="section" id="code-structure">
+<h3>Code Structure<a class="headerlink" href="#code-structure" title="Permalink to this headline">¶</a></h3>
+<p>In Python, the structure of your code is determined by whitespace.</p>
+<p>How you <em>indent</em> your code determines how it is structured</p>
+<div class="highlight-python"><div class="highlight"><pre>block statement:
+    some code body
+    some more code body
+    another block statement:
+        code body in
+        that block
+</pre></div>
+</div>
+<p>The colon that terminates a block statement is also important...</p>
+<p>You can put a one-liner after the colon:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [167]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="gp">In [168]: </span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">12</span>
+</pre></div>
+</div>
+<p>But this should only be done if it makes your code <strong>more</strong> readable.</p>
+<p>Whitespace is important in Python.</p>
+<p>An indent <em>could</em> be:</p>
+<ul class="simple">
+<li>Any number of spaces</li>
+<li>A tab</li>
+<li>A mix of tabs and spaces:</li>
+</ul>
+<p>If you want anyone to take you seriously as a Python developer:</p>
+<p class="centered"><strong>Always use four spaces &#8211; really!</strong></p>
+<p><a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">(PEP 8)</a></p>
+<p>Other than indenting &#8211; space doesn&#8217;t matter, technically.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">4</span><span class="o">+</span><span class="mi">12</span><span class="o">/</span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">12</span> <span class="o">/</span>   <span class="n">func</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span>   <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>But you should strive for proper style.  Read <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">PEP 8</a> and install a linter in
+your editor.</p>
+</div>
+<div class="section" id="modules-and-packages">
+<h3>Modules and Packages<a class="headerlink" href="#modules-and-packages" title="Permalink to this headline">¶</a></h3>
+<p>Python is all about <em>namespaces</em> &#8211;  the &#8220;dots&#8221;</p>
+<p><tt class="docutils literal"><span class="pre">name.another_name</span></tt></p>
+<p>The &#8220;dot&#8221; indicates that you are looking for a name in the <em>namespace</em> of the
+given object. It could be:</p>
+<ul class="simple">
+<li>name in a module</li>
+<li>module in a package</li>
+<li>attribute of an object</li>
+<li>method of an object</li>
+</ul>
+<p>A module is simply a namespace.</p>
+<p>It might be a single file, or it could be a collection of files that define a
+shared API.</p>
+<p>To a first approximation, you can think of the files you write that end in
+<tt class="docutils literal"><span class="pre">.py</span></tt> as modules.</p>
+<p>A package is a module with other modules in it.</p>
+<p>On a filesystem, this is represented as a directory that contains one or more
+<tt class="docutils literal"><span class="pre">.py</span></tt> files, one of which <strong>must</strong> be called <tt class="docutils literal"><span class="pre">__init__.py</span></tt>.</p>
+<p>When you have a package, you can import the package, or any of the modules
+inside it.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">modulename</span>
+<span class="kn">from</span> <span class="nn">modulename</span> <span class="kn">import</span> <span class="n">this</span><span class="p">,</span> <span class="n">that</span>
+<span class="kn">import</span> <span class="nn">modulename</span> <span class="kn">as</span> <span class="nn">a_new_name</span>
+<span class="kn">from</span> <span class="nn">modulename</span> <span class="kn">import</span> <span class="n">this</span> <span class="k">as</span> <span class="n">that</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">packagename.modulename</span>
+<span class="kn">from</span> <span class="nn">packagename.modulename</span> <span class="kn">import</span> <span class="n">this</span><span class="p">,</span> <span class="n">that</span>
+<span class="kn">from</span> <span class="nn">package</span> <span class="kn">import</span> <span class="n">modulename</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://effbot.org/zone/import-confusion.htm">http://effbot.org/zone/import-confusion.htm</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">modulename</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p class="centered large"><strong>Don&#8217;t do this!</strong></p>
+</div>
+<div class="section" id="import">
+<h3>Import<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h3>
+<p>When you import a module, or a symbol from a module, the Python code is
+<em>compiled</em> to <strong>bytecode</strong>.</p>
+<div class="build container">
+<p>The result is a <tt class="docutils literal"><span class="pre">module.pyc</span></tt> file.</p>
+<p>This process <strong>executes all code at the module scope</strong>.</p>
+<p>For this reason, it is good to avoid module-scope statements that have
+global side-effects.</p>
+</div>
+<p>The code in a module is NOT re-run when imported again</p>
+<p>It must be explicitly reloaded to be re-run</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">modulename</span>
+<span class="nb">reload</span><span class="p">(</span><span class="n">modulename</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In addition to importing modules, you can run them.</p>
+<p>There are a few ways to do this:</p>
+<ul class="build simple">
+<li><tt class="docutils literal"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">hello.py</span></tt>   &#8211; must be in current working directory</li>
+<li><tt class="docutils literal"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">-m</span> <span class="pre">hello</span></tt>   &#8211; any module on PYTHONPATH anywhere on the system</li>
+<li><tt class="docutils literal"><span class="pre">$</span> <span class="pre">./hello.py</span></tt>        &#8211; put <tt class="docutils literal"><span class="pre">#!/usr/bin/env</span> <span class="pre">python</span></tt>  at top of module
+(Unix)</li>
+<li><tt class="docutils literal"><span class="pre">In</span> <span class="pre">[149]:</span> <span class="pre">run</span> <span class="pre">hello.py</span></tt>     &#8211; at the IPython prompt &#8211; running a module
+brings its names into the interactive namespace</li>
+</ul>
+<p>Like importing, running a module executes all statements at the module level.</p>
+<div class="build container">
+<p>But there&#8217;s an important difference.</p>
+<p>When you <em>import</em> a module, the value of the symbol <tt class="docutils literal"><span class="pre">__name__</span></tt> in the
+module is the same as the filename.</p>
+<p>When you <em>run</em> a module, the value of the symbol <tt class="docutils literal"><span class="pre">__name__</span></tt> is
+<tt class="docutils literal"><span class="pre">__main__</span></tt>.</p>
+<p>This allows you to create blocks of code that are executed <em>only when you
+run a module</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c"># Do something interesting here</span>
+    <span class="c"># It will only happen when the module is run</span>
+</pre></div>
+</div>
+</div>
+<p>This is useful in a number of cases.</p>
+<div class="build container">
+<p>You can put code here that lets your module be a utility script</p>
+<p>You can put code here that demonstrates the functions contained in your
+module</p>
+<p>You can put code here that proves that your module works.</p>
+</div>
+<p>Writing <tt class="docutils literal"><span class="pre">tests</span></tt> that demonstrate that your program works is an important part
+of learning to program.</p>
+<p>The python <tt class="docutils literal"><span class="pre">assert</span></tt> statement is useful in writing <tt class="docutils literal"><span class="pre">main</span></tt> blocks that test
+your code.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
+<span class="gp">   ...: </span>    <span class="k">return</span> <span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span>
+<span class="gp">   ...:</span>
+
+<span class="gp">In [2]: </span><span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span>
+
+<span class="gp">In [3]: </span><span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-3-6731d4ac4476&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span>
+
+<span class="ne">AssertionError</span>:
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="in-class-lab">
+<h2>In-Class Lab<a class="headerlink" href="#in-class-lab" title="Permalink to this headline">¶</a></h2>
+<p class="center large">Import Interactions</p>
+<div class="section" id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
+<p>Experiment with importing different ways:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="gp">In [4]: </span><span class="n">math</span><span class="o">.&lt;</span><span class="n">TAB</span><span class="o">&gt;</span>
+<span class="go">math.acos       math.degrees    math.fsum       math.pi</span>
+<span class="go">math.acosh      math.e          math.gamma      math.pow</span>
+<span class="go">math.asin       math.erf        math.hypot      math.radians</span>
+<span class="go">math.asinh      math.erfc       math.isinf      math.sin</span>
+<span class="go">math.atan       math.exp        math.isnan      math.sinh</span>
+<span class="go">math.atan2      math.expm1      math.ldexp      math.sqrt</span>
+<span class="go">math.atanh      math.fabs       math.lgamma     math.tan</span>
+<span class="go">math.ceil       math.factorial  math.log        math.tanh</span>
+<span class="go">math.copysign   math.floor      math.log10      math.trunc</span>
+<span class="go">math.cos        math.fmod       math.log1p</span>
+<span class="go">math.cosh       math.frexp      math.modf</span>
+</pre></div>
+</div>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [6]: </span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gh">Out[6]: </span><span class="go">2.0</span>
+<span class="gp">In [7]: </span><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<span class="gp">In [8]: </span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gh">Out[8]: </span><span class="go">2.0</span>
+<span class="gp">In [9]: </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="gp">In [10]: </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gh">Out[10]: </span><span class="go">2.0</span>
+</pre></div>
+</div>
+<p>Experiment with importing different ways:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You wouldn&#8217;t want to import * those!</p>
+<blockquote>
+<div>&#8211; check out</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">u&#39;/foo/bar/baz.txt&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">u&#39;/foo/bar&#39;</span><span class="p">,</span> <span class="s">u&#39;baz.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-puzzle-solved">
+<h3>Module Puzzle Solved<a class="headerlink" href="#module-puzzle-solved" title="Permalink to this headline">¶</a></h3>
+<p>Now we will solve our Module Puzzle!</p>
+<p>Write a module (file) called <cite>mystery.py</cite> with a function
+inside that solves one of the CodingBat exercises from
+before:</p>
+<p><a class="reference download internal" href="_downloads/codingbat.rst"><tt class="xref download docutils literal"><span class="pre">codingbat.rst</span></tt></a></p>
+<p>Be sure to write a good docstring for your function describing
+how to use it, like this example.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">square_root</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the square root of a number.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        n: the number to get the square root of.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        the square root of n.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Include a check to see if the module is being run,
+or it is being imported.</p>
+<p>If it is being run, execute some test code that
+calls your function.</p>
+<p>Someone upload their file to Slack and volunteer.</p>
+<p>I&#8217;ll go through the process of importing the module,
+and we&#8217;ll try to figure out what your function does,
+and how to run it.</p>
 </div>
 <div class="section" id="course-logistics">
 <h3>Course Logistics<a class="headerlink" href="#course-logistics" title="Permalink to this headline">¶</a></h3>
@@ -475,8 +778,6 @@ multiple names (or no name)</p>
 </div>
 <div class="section" id="mutability">
 <h2>Mutability<a class="headerlink" href="#mutability" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="_images/transmogrifier.jpg"><img alt="Presto change-o" src="_images/transmogrifier.jpg" style="width: 35%;" /></a>
-<p class="credit">image from flickr by <a class="reference external" href="https://www.flickr.com/photos/illuminaut/3595530403">illuminaut</a>, (CC by-nc-sa)</p>
 <div class="section" id="mutability-in-python">
 <h3>Mutability in Python<a class="headerlink" href="#mutability-in-python" title="Permalink to this headline">¶</a></h3>
 <p>All objects in Python fall into one of two camps:</p>
@@ -846,8 +1147,8 @@ returns something that can be used for sorting:</p>
 <p>(actually any mutable sequence....)</p>
 </div>
 </div>
-<div class="section" id="id1">
-<h2>Iteration<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>Iteration<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p class="build">Repetition, Repetition, Repetition, Repe...</p>
 <div class="section" id="for-loops">
 <h3>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h3>
@@ -1317,7 +1618,23 @@ the main class repo.</p>
 <li><a class="reference internal" href="#">Session Three: Sequences, Iteration and String Formatting</a><ul>
 <li><a class="reference internal" href="#review-questions">Review/Questions</a><ul>
 <li><a class="reference internal" href="#review-of-previous-session">Review of Previous Session</a></li>
-<li><a class="reference internal" href="#corrections">Corrections</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unix-git-workshop-this-saturday">Unix &amp; Git Workshop This Saturday</a></li>
+<li><a class="reference internal" href="#today-s-agenda">Today&#8217;s Agenda</a></li>
+<li><a class="reference internal" href="#timewise">Timewise</a></li>
+<li><a class="reference internal" href="#substitution-of-return-values">Substitution of Return Values</a></li>
+<li><a class="reference internal" href="#recursion">Recursion</a></li>
+<li><a class="reference internal" href="#code-structure-modules-and-namespaces">Code Structure, Modules, and Namespaces</a><ul>
+<li><a class="reference internal" href="#module-puzzle">Module Puzzle</a></li>
+<li><a class="reference internal" href="#code-structure">Code Structure</a></li>
+<li><a class="reference internal" href="#modules-and-packages">Modules and Packages</a></li>
+<li><a class="reference internal" href="#import">Import</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#in-class-lab">In-Class Lab</a><ul>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
+<li><a class="reference internal" href="#module-puzzle-solved">Module Puzzle Solved</a></li>
 <li><a class="reference internal" href="#course-logistics">Course Logistics</a></li>
 <li><a class="reference internal" href="#survey-feedback">Survey Feedback</a></li>
 <li><a class="reference internal" href="#homework-review">Homework Review</a></li>
@@ -1356,7 +1673,7 @@ the main class repo.</p>
 <li><a class="reference internal" href="#more-documentation">More Documentation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id1">Iteration</a><ul>
+<li><a class="reference internal" href="#id2">Iteration</a><ul>
 <li><a class="reference internal" href="#for-loops">For Loops</a></li>
 <li><a class="reference internal" href="#while-loops">While Loops</a></li>
 <li><a class="reference internal" href="#similarities">Similarities</a></li>
@@ -1381,10 +1698,10 @@ the main class repo.</p>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="session02.html"
-                        title="previous chapter">Session Two: Functions, Booleans and Modules</a></p>
+                        title="previous chapter">Session Two: Functions and Booleans</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="session04.html"
-                        title="next chapter">Session Four: Dictionaries, Sets, Exceptions, and Files</a></p>
+                        title="next chapter">Session Four (Tentative): Dictionaries, Sets, Exceptions, and Files</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -1409,10 +1726,10 @@ the main class repo.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="session04.html" title="Session Four: Dictionaries, Sets, Exceptions, and Files"
+          <a href="session04.html" title="Session Four (Tentative): Dictionaries, Sets, Exceptions, and Files"
              >next</a> |</li>
         <li class="right" >
-          <a href="session02.html" title="Session Two: Functions, Booleans and Modules"
+          <a href="session02.html" title="Session Two: Functions and Booleans"
              >previous</a> |</li>
         <li><a href="index.html">F2 Python</a> &raquo;</li> 
       </ul>

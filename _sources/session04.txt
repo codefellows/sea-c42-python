@@ -1,9 +1,15 @@
 .. Foundations 2: Python slides file, created by
-   Chris Barker: May 12, 2014.
+   Paul Pham: June 22, 2015.
 
 *******************************************************
-Session Four: Dictionaries, Sets, Exceptions, and Files
+Session Four (Tentative): Dictionaries, Sets, Exceptions, and Files
 *******************************************************
+
+Subject to Change
+================
+
+This material is subject to change before
+Session Four on June 24, 2015.
 
 Review/Questions
 ================
@@ -447,7 +453,7 @@ Membership is on the keys.
 
   In [13]: for item in d.iteritems():
      ....:     print item
-     ....:     
+     ....:
   ('this', 5)
   ('that', 7)
   In [15]: for key in d.iterkeys():
@@ -600,13 +606,13 @@ All the "set" operations from math class...
     s.isdisjoint(other)
 
     s.issubset(other)
-    
+
     s.union(other, ...)
-    
+
     s.intersection(other, ...)
-    
+
     s.difference(other, ...)
-    
+
     s.symmetric_difference( other, ...)
 
 Frozen Set

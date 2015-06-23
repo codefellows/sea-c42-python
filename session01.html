@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Code Fellows F2 Python, March-April 2015" href="index.html" />
-    <link rel="next" title="Session Two: Functions, Booleans and Modules" href="session02.html" />
+    <link rel="next" title="Session Two: Functions and Booleans" href="session02.html" />
     <link rel="prev" title="Syllabus" href="syllabus.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -50,7 +50,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="session02.html" title="Session Two: Functions, Booleans and Modules"
+          <a href="session02.html" title="Session Two: Functions and Booleans"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="syllabus.html" title="Syllabus"
@@ -91,20 +91,8 @@ especially through education.</p>
 <div class="section" id="your-tas">
 <h3>Your TAs<a class="headerlink" href="#your-tas" title="Permalink to this headline">¶</a></h3>
 <div class="center large line-block">
-<div class="line">Henry Howes</div>
-<div class="line">&#64;henrykh</div>
-</div>
-<div class="line-block">
-<div class="line">Joel Stanner</div>
-<div class="line">&#64;joelstanner</div>
-</div>
-<div class="line-block">
-<div class="line">Denise Barnes</div>
-<div class="line">&#64;finddeniseonline</div>
-</div>
-<div class="line-block">
-<div class="line">Jeff Mendiola</div>
-<div class="line">&#64;jwmendio</div>
+<div class="line">Ben Friedland</div>
+<div class="line">&#64;ben_friedland</div>
 </div>
 </div>
 <div class="section" id="how-this-fits-into-codefellows">
@@ -125,16 +113,15 @@ especially through education.</p>
 </div>
 <div class="section" id="outline-of-this-class">
 <h3>Outline of this Class<a class="headerlink" href="#outline-of-this-class" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Session 1: Dev Environment, Python Syntax</li>
-<li>Session 2: Functions, Modules, Booleans</li>
-<li>Session 3: Sequences, Iteration and String Formatting</li>
-<li>Session 4: Dictionaries, Sets, Exceptions, and Files</li>
-<li>Session 5: Arguments, Comprehensions, Lambdas and Functional Programming</li>
-<li>Session 6: Intro to Object Oriented Programming</li>
-<li>Session 7: Testing, More OO</li>
-<li>Session 8: Optional Topics (Generators, Iterators, Decorators, and Context Managers)</li>
-</ul>
+<p>(Tentative, subject to adjustment as class progresses)
+* Session 1: Dev Environment, Python Syntax
+* Session 2: Functions, Modules, Booleans
+* Session 3: Sequences, Iteration and String Formatting
+* Session 4: Dictionaries, Sets, Exceptions, and Files
+* Session 5: Arguments, Comprehensions, Lambdas and Functional Programming
+* Session 6: Intro to Object Oriented Programming
+* Session 7: Testing, More OO
+* Session 8: Optional Topics (Generators, Iterators, Decorators, and Context Managers)</p>
 <p>Based on a curriculum designed by</p>
 <div class="line-block">
 <div class="line">Cris Ewing and Chris Barker</div>
@@ -159,42 +146,34 @@ to the program.</p>
 <li>Twice a week for 4 weeks</li>
 <li>8 total class sessions</li>
 <li>Mondays and Wednesdays, 7-9pm</li>
-<li>The &#8220;Easy&#8221;</li>
-</ul>
-</div>
-<div class="section" id="office-hours">
-<h3>Office Hours<a class="headerlink" href="#office-hours" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>6pm before class, in the Easy</li>
-<li>Instructor + all TAs will be here</li>
-<li>Also by appointment with any TA</li>
 </ul>
 </div>
 <div class="section" id="homework">
 <h3>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>2-4 homework tasks per class session.</li>
-<li>Overall, about 20 homework tasks.</li>
-<li>Worth 5-10 points each.</li>
+<li>Overall, about 25 homework tasks.</li>
+<li>Worth 5 points each.</li>
 </ul>
-<p>Rubric:</p>
-<ul class="simple">
-<li>0 points not turned in</li>
-<li>1 points crashes, major syntax errors.</li>
-<li>2 points crashes, minor syntax errors.</li>
-<li>3 points runs, major logical errors</li>
-<li>4 points runs, with minor logical or style errors</li>
-<li>5 points, compiles and runs perfectly with good style.</li>
-</ul>
+<p>Default Rubric:</p>
+<p>Each assignment in Canvas will have its own
+rubric. Some of them will use this standard
+rubric.
+* 0 points not turned in
+* 1 points crashes, major syntax errors.
+* 2 points crashes, minor syntax errors.
+* 3 points runs, major logical errors
+* 4 points runs, with minor logical or style errors
+* 5 points, compiles and runs perfectly with good style.</p>
 </div>
 <div class="section" id="grading-policy">
 <h3>Grading Policy<a class="headerlink" href="#grading-policy" title="Permalink to this headline">¶</a></h3>
 <p>In order to pass the class:</p>
 <ul class="simple">
 <li>Attend at least 6 out of 8 classes.</li>
-<li>Score 85% of the points in the class total.</li>
-<li>You can resubmit to get more points.</li>
-<li>Late homework will be accepted up to 1 week after the class has ended (July 15)</li>
+<li>Score 80% of the points on each assigned homework task.</li>
+<li>You can resubmit to get 4/5 points.</li>
+<li>Late homework will be accepted up to 1 week after the class has ended.</li>
 </ul>
 </div>
 <div class="section" id="intense-fast-paced">
@@ -210,10 +189,6 @@ to the program.</p>
 <h3>Who are you?<a class="headerlink" href="#who-are-you" title="Permalink to this headline">¶</a></h3>
 <p class="center large">Let&#8217;s go around and introduce ourselves.</p>
 </div>
-<div class="section" id="teams">
-<h3>Teams<a class="headerlink" href="#teams" title="Permalink to this headline">¶</a></h3>
-<p class="center large">Let&#8217;s split the class up into 3 teams</p>
-</div>
 </div>
 <div class="section" id="course-materials-online">
 <h2>Course Materials Online<a class="headerlink" href="#course-materials-online" title="Permalink to this headline">¶</a></h2>
@@ -223,7 +198,7 @@ to the program.</p>
 <p>There are two repositories in GitHub you will want to bookmark:</p>
 <dl class="docutils">
 <dt>Student Homework Repository:</dt>
-<dd><p class="first"><a class="reference external" href="https://github.com/codefellows/sea-c42-python">https://github.com/codefellows/sea-c42-python</a></p>
+<dd><p class="first"><a class="reference external" href="https://github.com/codefellows/sea-c34-python">https://github.com/codefellows/sea-c34-python</a></p>
 <p class="last">Fork this repository to your own github account and do homework there.</p>
 </dd>
 <dt>Course Materials Repository:</dt>
@@ -231,7 +206,7 @@ to the program.</p>
 <p>Contains lecture material sources, supplemental materials and homework
 assignments</p>
 <p class="last">A rendered HTML copy of all these class materials may be found online at
-<a class="reference external" href="http://codefellows.github.io/sea-c42-python">http://codefellows.github.io/sea-c42-python</a></p>
+<a class="reference external" href="http://codefellows.github.io/sea-c34-python">http://codefellows.github.io/sea-c34-python</a></p>
 </dd>
 </dl>
 </div>
@@ -239,7 +214,7 @@ assignments</p>
 <h3>Canvas<a class="headerlink" href="#canvas" title="Permalink to this headline">¶</a></h3>
 <p>We will be using Canvas to track your homework submission.  Grades will be
 entered here as well:</p>
-<p><a class="reference external" href="http://canvas.instructure.com/courses/939488">http://canvas.instructure.com/courses/939488</a></p>
+<p><a class="reference external" href="https://canvas.instructure.com/courses/919974">https://canvas.instructure.com/courses/919974</a></p>
 </div>
 <div class="section" id="elsewhere">
 <h3>Elsewhere<a class="headerlink" href="#elsewhere" title="Permalink to this headline">¶</a></h3>
@@ -248,13 +223,13 @@ entered here as well:</p>
 <dd><p class="first">Code Fellows provides an email list for us. We will use this list for
 announcements. Please make sure that you are receiving the messages sent to
 this list:</p>
-<p class="last"><a class="reference external" href="mailto:sea-c42&#37;&#52;&#48;codefellows&#46;com">sea-c42<span>&#64;</span>codefellows<span>&#46;</span>com</a></p>
+<p class="last"><a class="reference external" href="mailto:sea-c34&#37;&#52;&#48;codefellows&#46;com">sea-c34<span>&#64;</span>codefellows<span>&#46;</span>com</a></p>
 </dd>
 <dt>Class <a class="reference external" href="https://codefellows.slack.com">Slack</a> Channel:</dt>
 <dd><p class="first">The student repository README contains a link to the class chatroom. You can
 sign into the <cite>Codefellow Slack team &lt;https://codefellows.slack.com&gt;</cite> website
 or you can download the desktop client for your OS.</p>
-<p>Once you&#8217;re signed in, join the <cite>#sea-c42</cite> channel.</p>
+<p>Once you&#8217;re signed in, join the <cite>#sea-c34-python</cite> channel.</p>
 <p class="last">This is the official communication medium for the class, and where announcements will be made.</p>
 </dd>
 </dl>
@@ -349,9 +324,8 @@ simpler</li>
 <li>Removed the &#8220;warts&#8221;</li>
 <li>Allowed to break code</li>
 </ul>
-<p>This class uses Python 3.x (3.4 is the latest as of this writing)
-but we will point out the minor differences with Python 2.7, which
-you will see in the wild.</p>
+<p>This class uses Python 2.7 but makes use of many
+important Python 3.x changes (backported)</p>
 <ul class="build simple">
 <li>Adoption of Python 3 is growing fast<ul>
 <li>A few key packages still not supported (<a class="reference external" href="https://python3wos.appspot.com/">https://python3wos.appspot.com/</a>)</li>
@@ -374,14 +348,15 @@ supporting Python 2 and 3)</li>
 <h3>Other Reasons Why Python is Awesome<a class="headerlink" href="#other-reasons-why-python-is-awesome" title="Permalink to this headline">¶</a></h3>
 <p>Keep your eye on the prize!</p>
 <ul class="simple">
-<li>Built-in data types like lists, dictionaries, tuples that access simply by typing the right grouping symbols! <cite>[] {} ()</cite></li>
-<li>Its father, Guido van Rossum, still hearts it, actively guides its development,</li>
+<li>Built-in data types like lists, dictionaries, tuples that access simply by typing</li>
 </ul>
-<p>and tweets about how awesome it is.
+<p>the right grouping symbols! <cite>[] {} ()</cite>
+* Its father, Guido van Rossum, still hearts it, actively guides its development,
+and tweets about how awesome it is.
 * It is named after Monty Python, but it also enables a lot of snake puns.
 * Short, succinct metaphors and a can-do attitude
-* Easy to experiment and play with. Open the interpreter, start messing around.</p>
-<p>Your computer is your own laboratory or viewport into exploring a virtual world.</p>
+* Easy to experiment and play with. Open the interpreter, start messing around.
+Your computer is your own laboratory or viewport into exploring a virtual world.</p>
 </div>
 </div>
 <div class="section" id="introduction-to-your-environment">
@@ -402,7 +377,7 @@ home.</p>
 <p>I suggest running through the <strong>cli</strong> tutorial at &#8220;learn code the hard way&#8221;:</p>
 <p><a class="reference external" href="http://cli.learncodethehardway.org/book">http://cli.learncodethehardway.org/book</a></p>
 <p>You can also read the materials from the Code Fellows Unix &amp; Git workshop:</p>
-<p><a href="#id3"><span class="problematic" id="id4">`http://github.com/codefellows/sea-w29`_</span></a></p>
+<p><a class="reference external" href="http://cewing.github.io/cf-uge">http://cewing.github.io/cf-uge</a></p>
 <p>There are a few things you can do to help make your command line a better place
 to work.</p>
 <p>Part of your homework this week will be to do these things.</p>
@@ -412,8 +387,8 @@ to work.</p>
 <h3>Your Interpreter<a class="headerlink" href="#your-interpreter" title="Permalink to this headline">¶</a></h3>
 <p>Python comes with a built-in interpreter.</p>
 <p>You see it when you type <tt class="docutils literal"><span class="pre">python</span></tt> at the command line:</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="go">$ python3</span>
-<span class="go">Python 3.4.3 (default, Jun  1 2015, 09:58:35)</span>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="go">$ python</span>
+<span class="go">Python 2.7.5 (default, Aug 25 2013, 00:04:04)</span>
 <span class="go">[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin</span>
 <span class="go">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -510,11 +485,11 @@ characters hidden behind the scenes.</p>
 <p>We will take the time here in class to get this going.</p>
 <p>This helps to ensure that you will be able to work.</p>
 </div>
-<div class="section" id="step-1-python-3-4">
-<h3>Step 1: Python 3.4<a class="headerlink" href="#step-1-python-3-4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="step-1-python-2-7">
+<h3>Step 1: Python 2.7<a class="headerlink" href="#step-1-python-2-7" title="Permalink to this headline">¶</a></h3>
 <p class="large">You have this already, right?</p>
 <div class="highlight-bash"><div class="highlight"><pre>$ python
-Python 3.4.3 (default, Jun  1 2015, 09:58:35)
+Python 2.7.5 (default, Aug 25 2013, 00:04:04)
 [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 &gt;&gt;&gt; ^D
@@ -533,10 +508,13 @@ $
 <p>Python comes with quite a bit (&#8220;batteries included&#8221;).</p>
 <p>Sometimes you need a bit more.</p>
 <p>Pip allows you to install Python packages to expand your system.</p>
-<p>pip comes preinstalled with Python 3.4.</p>
-<p>You can check to see if you have it installed by typing:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pip --version
-pip 7.0.3 from /usr/local/lib/python3.4/site-packages <span class="o">(</span>python 3.4<span class="o">)</span>
+<p>You install it by downloading and then executing an installer script:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>curl -O https://bootstrap.pypa.io/get-pip.py
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                             Dload  Upload   Total   Spent    Left  Speed
+100 1309k  100 1309k    0     0   449k      0  0:00:02  0:00:02 --:--:--  449k
+
+<span class="nv">$ </span>python get-pip.py
 </pre></div>
 </div>
 <p>(or go to: <a class="reference external" href="http://pip.readthedocs.org/en/latest/installing.html">http://pip.readthedocs.org/en/latest/installing.html</a>)</p>
@@ -560,26 +538,26 @@ projects, it can be a key tool.</p>
 <p>If you want to install it, here are some notes:</p>
 <p><a class="reference external" href="./supplements/virtualenv.html">Intro to VirtualEnv</a></p>
 </div>
-<div class="section" id="step-4-fork-class-repository">
-<h3>Step 4: Fork Class Repository<a class="headerlink" href="#step-4-fork-class-repository" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="step-4-clone-class-repository">
+<h3>Step 4: Clone Class Repository<a class="headerlink" href="#step-4-clone-class-repository" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="www.github.com">GitHub</a> is an industry-standard system for collaboration on
 software projects &#8211; particularly open source ones.</p>
 <p>We will use it this class to manage submitting and reviewing your work, etc.</p>
 <p><strong>Wait!</strong> Don&#8217;t have a gitHub account? Set one up now.</p>
 <p>Next, you&#8217;ll make a copy of the class repository using <tt class="docutils literal"><span class="pre">git</span></tt>.</p>
 <p>The canonical copy is in the CodeFellows organization on GitHub:</p>
-<p><a class="reference external" href="https://github.com/codefellows/sea-c42-python">https://github.com/codefellows/sea-c42-python</a></p>
+<p><a class="reference external" href="https://github.com/codefellows/sea-c34-python">https://github.com/codefellows/sea-c34-python</a></p>
 <p>Open that URL, and click on the <em>Fork</em> button at the top right corner.</p>
 <p>This will make a copy of this repository in <em>your</em> github account.</p>
 <p>From here, you&#8217;ll want to make a clone of your copy on your local machine.</p>
 <p>At your command line, run the following commands:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>your_working_directory_for_the_class
-<span class="nv">$ </span>git clone https://github.com/&lt;yourname&gt;/sea-c42-python.git
+<span class="nv">$ </span>git clone https://github.com/&lt;yourname&gt;/sea-c34-python.git
 </pre></div>
 </div>
 <p>(you can copy and paste that link from the gitHub page)</p>
 <p>If you have an SSH key set up for gitHub, you&#8217;ll want to do this instead:</p>
-<div class="highlight-bash"><div class="highlight"><pre>git@github.com:&lt;yourname&gt;/sea-c42-python.git
+<div class="highlight-bash"><div class="highlight"><pre>git@github.com:&lt;yourname&gt;/sea-c34-python.git
 </pre></div>
 </div>
 <p><strong>Remember</strong>, &lt;yourname&gt; should be replaced by your github account name.</p>
@@ -1408,14 +1386,6 @@ no arguments, otherwise prints the correct translation of
 to the program.</p>
 <p>Partner up and let&#8217;s get to work!</p>
 </div>
-<div class="section" id="id2">
-<h2>Homework<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p class="center large">Three Tasks due by Wednesday, check them out on Canvas.</p>
-<p>Homework Task 1: Python Pre-work</p>
-<p>Homework Task 2: Style Checking</p>
-<p>Homework Task 3: Gitting To Know You</p>
-<p>Homework Task 4: Break These Functions</p>
-</div>
 </div>
 
 
@@ -1434,12 +1404,10 @@ to the program.</p>
 <li><a class="reference internal" href="#outline-of-this-class">Outline of this Class</a></li>
 <li><a class="reference internal" href="#puzzle-given">Puzzle Given</a></li>
 <li><a class="reference internal" href="#class-meetings">Class Meetings</a></li>
-<li><a class="reference internal" href="#office-hours">Office Hours</a></li>
 <li><a class="reference internal" href="#homework">Homework</a></li>
 <li><a class="reference internal" href="#grading-policy">Grading Policy</a></li>
 <li><a class="reference internal" href="#intense-fast-paced">Intense, Fast-paced</a></li>
 <li><a class="reference internal" href="#who-are-you">Who are you?</a></li>
-<li><a class="reference internal" href="#teams">Teams</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#course-materials-online">Course Materials Online</a><ul>
@@ -1466,10 +1434,10 @@ to the program.</p>
 </li>
 <li><a class="reference internal" href="#setting-up-your-environment">Setting Up Your Environment</a><ul>
 <li><a class="reference internal" href="#our-class-environment">Our Class Environment</a></li>
-<li><a class="reference internal" href="#step-1-python-3-4">Step 1: Python 3.4</a></li>
+<li><a class="reference internal" href="#step-1-python-2-7">Step 1: Python 2.7</a></li>
 <li><a class="reference internal" href="#step-2-pip">Step 2: Pip</a></li>
 <li><a class="reference internal" href="#step-3-optional-virtualenv">Step 3: Optional &#8211; Virtualenv</a></li>
-<li><a class="reference internal" href="#step-4-fork-class-repository">Step 4: Fork Class Repository</a></li>
+<li><a class="reference internal" href="#step-4-clone-class-repository">Step 4: Clone Class Repository</a></li>
 <li><a class="reference internal" href="#brief-aside">Brief Aside</a></li>
 <li><a class="reference internal" href="#step-5-install-requirements">Step 5: Install Requirements</a></li>
 </ul>
@@ -1514,7 +1482,6 @@ to the program.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#puzzle-solved">Puzzle Solved</a></li>
-<li><a class="reference internal" href="#id2">Homework</a></li>
 </ul>
 </li>
 </ul>
@@ -1524,7 +1491,7 @@ to the program.</p>
                         title="previous chapter">Syllabus</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="session02.html"
-                        title="next chapter">Session Two: Functions, Booleans and Modules</a></p>
+                        title="next chapter">Session Two: Functions and Booleans</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -1549,7 +1516,7 @@ to the program.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="session02.html" title="Session Two: Functions, Booleans and Modules"
+          <a href="session02.html" title="Session Two: Functions and Booleans"
              >next</a> |</li>
         <li class="right" >
           <a href="syllabus.html" title="Syllabus"

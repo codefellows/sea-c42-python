@@ -4,8 +4,14 @@
 
 
 ***************************************************************************
-Session Five: Arguments, Comprehensions, Lambdas and Functional Programming
+Session Five (Tentative): Arguments, Comprehensions, Lambdas and Functional Programming
 ***************************************************************************
+
+Subject to Change
+================
+
+This material is subject to change before
+Session Five on June 29, 2015.
 
 
 Review/Questions

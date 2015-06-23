@@ -17,6 +17,12 @@ Last Session!
 * Context Managers
 * The Future
 
+Subject to Change
+================
+
+This material is subject to change before
+Session Eight on July 8, 2015.
+
 Review/Questions
 ================
 
