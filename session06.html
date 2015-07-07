@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Session Six (Tentative): Intro to Object Oriented Programming &mdash; Code Fellows F2 Python, March-April 2015</title>
+    <title>Session Six: Arguments, Comprehensions, Intro to Object Oriented Programming &mdash; Code Fellows F2 Python, March-April 2015</title>
     
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Code Fellows F2 Python, March-April 2015" href="index.html" />
     <link rel="next" title="Session Seven (Tentative): Testing, More OO" href="session07.html" />
-    <link rel="prev" title="Homework Review" href="session05.html" />
+    <link rel="prev" title="Session Five: Dictionaries, Files, Exceptions" href="session05.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -53,7 +53,7 @@
           <a href="session07.html" title="Session Seven (Tentative): Testing, More OO"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="session05.html" title="Homework Review"
+          <a href="session05.html" title="Session Five: Dictionaries, Files, Exceptions"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">F2 Python</a> &raquo;</li> 
       </ul>
@@ -64,45 +64,236 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="session-six-tentative-intro-to-object-oriented-programming">
-<h1>Session Six (Tentative): Intro to Object Oriented Programming<a class="headerlink" href="#session-six-tentative-intro-to-object-oriented-programming" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="session-six-arguments-comprehensions-intro-to-object-oriented-programming">
+<h1>Session Six: Arguments, Comprehensions, Intro to Object Oriented Programming<a class="headerlink" href="#session-six-arguments-comprehensions-intro-to-object-oriented-programming" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="advanced-argument-passing">
+<h2>Advanced Argument Passing<a class="headerlink" href="#advanced-argument-passing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="keyword-arguments">
+<h3>Keyword arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h3>
+<p>When defining a function, you can specify only what you need &#8211; in any order</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [150]: </span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="gp">In [151]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="gp">   .....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">&quot; &quot;</span><span class="p">)</span>
+<span class="gp">   .....:</span>
+<span class="gp">In [152]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">1 2 3</span>
+<span class="gp">In [153]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">1 0 3</span>
+<span class="gp">In [154]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">1 2 3</span>
+</pre></div>
+</div>
+<p>A Common Idiom:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">do_something_different</span>
+    <span class="n">go_on_here</span>
+</pre></div>
+</div>
+<p>Can set defaults to variables</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [156]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">In [157]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">):</span>
+<span class="go">    print(u&quot;x is: %s&quot; % x)</span>
+<span class="gp">   .....:</span>
+<span class="gp">In [158]: </span><span class="n">fun</span><span class="p">()</span>
+<span class="go">x is: 4</span>
+</pre></div>
+</div>
+<p>Defaults are evaluated when the function is defined</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [156]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">In [157]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">):</span>
+<span class="go">    print(u&quot;x is: %s&quot; % x)</span>
+<span class="gp">   .....:</span>
+<span class="gp">In [158]: </span><span class="n">fun</span><span class="p">()</span>
+<span class="go">x is: 4</span>
+<span class="gp">In [159]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="gp">In [160]: </span><span class="n">fun</span><span class="p">()</span>
+<span class="go">x is: 4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="function-arguments-in-variables">
+<h3>Function arguments in variables<a class="headerlink" href="#function-arguments-in-variables" title="Permalink to this headline">¶</a></h3>
+<p>function arguments are really just:</p>
+<div class="build container">
+<ul class="simple">
+<li>a tuple (positional arguments)</li>
+<li>a dict (keyword arguments)</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="n">msg</span> <span class="o">=</span> <span class="s">u&quot;position: </span><span class="si">%s</span><span class="s">, </span><span class="si">%s</span><span class="s"> -- shape: </span><span class="si">%s</span><span class="s">, </span><span class="si">%s</span><span class="s">&quot;</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="k">print</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+   <span class="o">...</span><span class="p">:</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">size</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;h&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">position</span><span class="p">,</span> <span class="o">**</span><span class="n">size</span><span class="p">)</span>
+<span class="n">position</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="o">--</span> <span class="n">shape</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="function-parameters-in-variables">
+<h3>Function parameters in variables<a class="headerlink" href="#function-parameters-in-variables" title="Permalink to this headline">¶</a></h3>
+<p>You can also pull the parameters out in the function as a tuple and a dict:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">u&quot;the positional arguments are: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">u&quot;the optional arguments are: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+<span class="gp">   ....:</span>
+<span class="gp">In [11]: </span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">this</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">that</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="go">the positional arguments are: (2, 3)</span>
+<span class="go">the optional arguments are: {&#39;this&#39;: 5, &#39;that&#39;: 7}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="passing-a-dict-to-the-string-format-method">
+<h3>Passing a dict to the <tt class="docutils literal"><span class="pre">string.format()</span></tt> method<a class="headerlink" href="#passing-a-dict-to-the-string-format-method" title="Permalink to this headline">¶</a></h3>
+<p>Now that you know that keyword args are really a dict, you can do this nifty
+trick:</p>
+<div class="build container">
+<div class="container">
+<p>The <tt class="docutils literal"><span class="pre">format</span></tt> method takes keyword arguments:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [24]: </span><span class="s">u&quot;My name is {first} {last}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="s">u&quot;Ewing&quot;</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="s">u&quot;Cris&quot;</span><span class="p">)</span>
+<span class="gh">Out[24]: </span><span class="go">u&#39;My name is Cris Ewing&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="container">
+<p>Build a dict of the keys and values:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [25]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&quot;last&quot;</span><span class="p">:</span> <span class="s">u&quot;Ewing&quot;</span><span class="p">,</span> <span class="s">u&quot;first&quot;</span><span class="p">:</span> <span class="s">u&quot;Cris&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="container">
+<p>And pass to <tt class="docutils literal"><span class="pre">format()``with</span> <span class="pre">``**</span></tt></p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [26]: </span><span class="s">u&quot;My name is {first} {last}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>
+<span class="gh">Out[26]: </span><span class="go">u&#39;My name is Paul Pham&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="list-and-dict-comprehensions">
+<h2>List and Dict Comprehensions<a class="headerlink" href="#list-and-dict-comprehensions" title="Permalink to this headline">¶</a></h2>
+<div class="left container">
+<p>A bit of functional programming</p>
+<div class="build container">
+<p>consider this common <tt class="docutils literal"><span class="pre">for</span></tt> loop structure:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+    <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This can be expressed with a single line using a &#8220;list comprehension&#8221;</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="list-comprehensions">
+<h3>List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h3>
+<p>What about nested for loops?</p>
+<div class="build container">
+<div class="highlight-python"><div class="highlight"><pre><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">var2</span> <span class="ow">in</span> <span class="n">a_list2</span><span class="p">:</span>
+        <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Can also be expressed in one line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">new_list</span> <span class="o">=</span>  <span class="p">[</span><span class="n">exp</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span> <span class="k">for</span> <span class="n">var2</span> <span class="ow">in</span> <span class="n">a_list2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You get the &#8220;outer product&#8221;, i.e. all combinations.</p>
+<p>(demo)</p>
+</div>
+<p>But usually you at least have a conditional in the loop:</p>
+<div class="build container">
+<div class="highlight-python"><div class="highlight"><pre><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">something_is_true</span><span class="p">:</span>
+        <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can add a conditional to the comprehension:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expr</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span> <span class="k">if</span> <span class="n">something_is_true</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>(demo)</p>
+</div>
+<p>Examples:</p>
+<div class="build container">
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [341]: </span><span class="p">[</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="gh">Out[341]: </span><span class="go">[0, 1, 4]</span>
+
+<span class="gp">In [342]: </span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+<span class="gh">Out[342]: </span><span class="go">[5, 6, 6, 7, 7, 8]</span>
+
+<span class="gp">In [343]: </span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gh">Out[343]: </span><span class="go">[0, 4, 8]</span>
+</pre></div>
+</div>
+<p>Remember this from last week?</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtin__</span><span class="p">)</span> <span class="k">if</span> <span class="s">&quot;Error&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
+<span class="p">[</span><span class="s">&#39;ArithmeticError&#39;</span><span class="p">,</span>
+ <span class="s">&#39;AssertionError&#39;</span><span class="p">,</span>
+ <span class="s">&#39;AttributeError&#39;</span><span class="p">,</span>
+ <span class="o">....</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="set-comprehensions">
+<h3>Set Comprehensions<a class="headerlink" href="#set-comprehensions" title="Permalink to this headline">¶</a></h3>
+<p>You can do it with sets, too:</p>
+<div class="build container">
+<div class="highlight-python"><div class="highlight"><pre><span class="n">new_set</span> <span class="o">=</span> <span class="p">{</span><span class="n">value</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>the same as this <tt class="docutils literal"><span class="pre">for</span></tt> loop:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">new_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">:</span>
+    <span class="n">new_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Example: finding all the vowels in a string...</p>
+<div class="build container">
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [19]: </span><span class="n">s</span> <span class="o">=</span> <span class="s">&quot;a not very long string&quot;</span>
+
+<span class="gp">In [20]: </span><span class="n">vowels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">&#39;aeiou&#39;</span><span class="p">)</span>
+
+<span class="gp">In [21]: </span><span class="p">{</span> <span class="n">let</span> <span class="k">for</span> <span class="n">let</span> <span class="ow">in</span> <span class="n">s</span> <span class="k">if</span> <span class="n">let</span> <span class="ow">in</span> <span class="n">vowels</span> <span class="p">}</span>
+<span class="gh">Out[21]: </span><span class="go">{&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;}</span>
+</pre></div>
+</div>
+<p>Side note: why did I do <tt class="docutils literal"><span class="pre">set('aeiou')</span></tt> rather than just <cite>aeiou</cite>?</p>
+</div>
+</div>
+<div class="section" id="dict-comprehensions">
+<h3>Dict Comprehensions<a class="headerlink" href="#dict-comprehensions" title="Permalink to this headline">¶</a></h3>
+<p>Also with dictionaries</p>
+<div class="build container">
+<div class="highlight-python"><div class="highlight"><pre><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="n">key</span><span class="p">:</span><span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>the same as this <tt class="docutils literal"><span class="pre">for</span></tt> loop:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">:</span>
+    <span class="n">new_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+</pre></div>
+</div>
+</div>
+<p>Example</p>
+<div class="build container">
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [22]: </span><span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="s">&quot;this_</span><span class="si">%i</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)}</span>
+<span class="gh">Out[22]: </span><span class="go">{0: &#39;this_0&#39;, 1: &#39;this_1&#39;, 2: &#39;this_2&#39;,</span>
+<span class="go">          3: &#39;this_3&#39;, 4: &#39;this_4&#39;}</span>
+</pre></div>
+</div>
+<p>Can you do the same thing with the <tt class="docutils literal"><span class="pre">dict()</span></tt> constructor?</p>
+</div>
 <p>Classes, instances, attributes, and subclassing</p>
-<div class="section" id="subject-to-change">
-<h2>Subject to Change<a class="headerlink" href="#subject-to-change" title="Permalink to this headline">¶</a></h2>
-<p>This material is subject to change before
-Session Six on July 1st, 2015.</p>
-</div>
-<div class="section" id="review-questions">
-<h2>Review/Questions<a class="headerlink" href="#review-questions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="review-of-previous-class">
-<h3>Review of Previous Class<a class="headerlink" href="#review-of-previous-class" title="Permalink to this headline">¶</a></h3>
-<ul class="build simple">
-<li>Argument Passing: <tt class="docutils literal"><span class="pre">*args</span></tt>, <tt class="docutils literal"><span class="pre">**kwargs</span></tt></li>
-<li>comprehensions</li>
-<li><tt class="docutils literal"><span class="pre">lambda</span></tt></li>
-<li>Solutions to the FizzBuzz problem.</li>
-</ul>
-</div>
-<div class="section" id="homework-review">
-<h3>Homework review<a class="headerlink" href="#homework-review" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>LBYL vs. EAFP</li>
-</ul>
-<p><a class="reference external" href="http://stackoverflow.com/questions/404795/lbyl-vs-eafp-in-java">http://stackoverflow.com/questions/404795/lbyl-vs-eafp-in-java</a></p>
-<ul class="simple">
-<li>Line Indentations</li>
-<li></li>
-</ul>
-<p>Other Homework Questions?</p>
-</div>
-<div class="build section" id="review-of-survey-feedback">
-<h3>Review of Survey Feedback<a class="headerlink" href="#review-of-survey-feedback" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Introductory readings</li>
-<li>More up-front explanation in class</li>
-<li>More connection between homework and in-class exercises</li>
-<li>Faster homework grading</li>
-</ul>
 </div>
 <div class="section" id="questions">
 <h3>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h3>
@@ -130,6 +321,13 @@ Session Six on July 1st, 2015.</p>
 <li><a class="reference external" href="https://docs.djangoproject.com/en/1.7/intro/tutorial01/">The official Django tutorial</a></li>
 </ul>
 </div>
+</div>
+<div class="section" id="change-in-classroom">
+<h2>Change in Classroom<a class="headerlink" href="#change-in-classroom" title="Permalink to this headline">¶</a></h2>
+<p>For our last week we will be in The Hardy (the East classroom), at the opposite
+end of the basement.</p>
+<p>Check in attendance for today!</p>
+<p>Please fill out survey responses.</p>
 </div>
 <div class="section" id="object-oriented-programming">
 <h2>Object Oriented Programming<a class="headerlink" href="#object-oriented-programming" title="Permalink to this headline">¶</a></h2>
@@ -388,284 +586,6 @@ extensively about why:</p>
 </div>
 </div>
 </div>
-<div class="section" id="subclassing-inheritance">
-<h2>Subclassing/Inheritance<a class="headerlink" href="#subclassing-inheritance" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="inheritance">
-<h3>Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this headline">¶</a></h3>
-<p>In object-oriented programming (OOP), inheritance is a way to reuse code of
-existing objects, or to establish a subtype from an existing object.</p>
-<p>Objects are defined by classes, classes can inherit attributes and behavior
-from pre-existing classes called base classes or super classes.</p>
-<p>The resulting classes are known as derived classes or subclasses.</p>
-<p>(<a class="reference external" href="http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29">http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29</a>)</p>
-</div>
-<div class="section" id="subclassing">
-<h3>Subclassing<a class="headerlink" href="#subclassing" title="Permalink to this headline">¶</a></h3>
-<p>A subclass &#8220;inherits&#8221; all the attributes (methods, etc) of the parent class.</p>
-<p>You can then change (&#8220;override&#8221;) some or all of the attributes to change the
-behavior.</p>
-<p>You can also add new attributes to extend the behavior.</p>
-<p>The simplest subclass in Python:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">A_subclass</span><span class="p">(</span><span class="n">The_superclass</span><span class="p">):</span>
-    <span class="k">pass</span>
-</pre></div>
-</div>
-<p><tt class="docutils literal"><span class="pre">A_subclass</span></tt>  now has exactly the same behavior as <tt class="docutils literal"><span class="pre">The_superclass</span></tt></p>
-<p>NOTE: when we put <tt class="docutils literal"><span class="pre">object</span></tt> in there, it means we are deriving from object &#8211;
-getting core functionality of all objects.</p>
-</div>
-<div class="section" id="overriding-attributes">
-<h3>Overriding attributes<a class="headerlink" href="#overriding-attributes" title="Permalink to this headline">¶</a></h3>
-<p>Overriding is as simple as creating a new attribute with the same name:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span>
-
-<span class="o">...</span>
-
-<span class="k">class</span> <span class="nc">NewCircle</span><span class="p">(</span><span class="n">Circle</span><span class="p">):</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;blue&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">NewCircle</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">nc</span><span class="o">.</span><span class="n">color</span>
-<span class="n">blue</span>
-</pre></div>
-</div>
-<p>all the <tt class="docutils literal"><span class="pre">self</span></tt>  instances will have the new attribute.</p>
-</div>
-<div class="section" id="overriding-methods">
-<h3>Overriding methods<a class="headerlink" href="#overriding-methods" title="Permalink to this headline">¶</a></h3>
-<p>Same thing, but with methods (remember, a method <em>is</em> an attribute in python)</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="o">...</span>
-    <span class="k">def</span> <span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;grows the circle&#39;s diameter by factor&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">*</span> <span class="n">factor</span>
-<span class="o">...</span>
-
-<span class="k">class</span> <span class="nc">NewCircle</span><span class="p">(</span><span class="n">Circle</span><span class="p">):</span>
-<span class="o">...</span>
-    <span class="k">def</span> <span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;grows the area by factor...&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>all the instances will have the new method</p>
-<p>A Program Design Suggestion:</p>
-<blockquote>
-<div>whenever you override a method, the interface of the new method should be
-the same as the old.  It should take the same parameters, return the same
-type, and obey the same preconditions and postconditions.</div></blockquote>
-<p>A Program Design Suggestion</p>
-<blockquote>
-<div><p>If you obey this rule, you will find that any function designed to work
-with an instance of a superclass, like a Deck, will also work with
-instances of subclasses like a Hand or PokerHand.  If you violate this
-rule, your code will collapse like (sorry) a house of cards.</p>
-<p class="attribution">&mdash;[ThinkPython 18.10]</p>
-</div></blockquote>
-<p>( Demo of class vs. instance attributes )</p>
-</div>
-</div>
-<div class="section" id="more-on-subclassing">
-<h2>More on Subclassing<a class="headerlink" href="#more-on-subclassing" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="overriding-init">
-<h3>Overriding <tt class="docutils literal"><span class="pre">__init__</span></tt><a class="headerlink" href="#overriding-init" title="Permalink to this headline">¶</a></h3>
-<p>Wanting or needing to override <tt class="docutils literal"><span class="pre">__init__</span></tt> is very common</p>
-<div class="build container">
-<p>You often need to call the super class <tt class="docutils literal"><span class="pre">__init__</span></tt>  as well</p>
-<p>Think &#8220;everything the parent does, plus this stuff too&#8221;</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diameter</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="n">diameter</span>
-<span class="o">...</span>
-<span class="k">class</span> <span class="nc">CircleR</span><span class="p">(</span><span class="n">Circle</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
-        <span class="n">diameter</span> <span class="o">=</span> <span class="n">radius</span><span class="o">*</span><span class="mi">2</span>
-        <span class="n">Circle</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diameter</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>exception to: &#8220;don&#8217;t change the method signature&#8221; rule.</p>
-</div>
-</div>
-<div class="section" id="more-subclassing">
-<h3>More subclassing<a class="headerlink" href="#more-subclassing" title="Permalink to this headline">¶</a></h3>
-<p>You can also call the superclass&#8217; other methods:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="o">...</span>
-    <span class="k">def</span> <span class="nf">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diameter</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">diameter</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-
-
-<span class="k">class</span> <span class="nc">CircleR2</span><span class="p">(</span><span class="n">Circle</span><span class="p">):</span>
-<span class="o">...</span>
-    <span class="k">def</span> <span class="nf">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Circle</span><span class="o">.</span><span class="n">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>There is nothing special about <tt class="docutils literal"><span class="pre">__init__</span></tt>  except that it gets called
-automatically when you instantiate an instance.</p>
-</div>
-<div class="section" id="when-to-subclass">
-<h3>When to Subclass<a class="headerlink" href="#when-to-subclass" title="Permalink to this headline">¶</a></h3>
-<div class="build container">
-<p>&#8220;Is a&#8221; relationship: Subclass/inheritance</p>
-<p>&#8220;Has a&#8221; relationship: Composition</p>
-</div>
-<p>&#8220;Is a&#8221; vs &#8220;Has a&#8221;</p>
-<div class="build container">
-<p>You may have a class that needs to accumulate an arbitrary number of
-objects.</p>
-<p>A list can do that &#8211; so should you subclass list?</p>
-<p>Ask yourself:</p>
-<p>&#8211; <strong>Is</strong> your class a list (with some extra functionality)?</p>
-<p>or</p>
-<p>&#8211; Does you class <strong>have</strong> a list?</p>
-<p>You only want to subclass list if your class could be used anywhere a list can
-be used.</p>
-</div>
-</div>
-<div class="section" id="attribute-resolution-order">
-<h3>Attribute resolution order<a class="headerlink" href="#attribute-resolution-order" title="Permalink to this headline">¶</a></h3>
-<p>When you access an attribute:</p>
-<p><tt class="docutils literal"><span class="pre">An_Instance.something</span></tt></p>
-<p>Python looks for it in this order:</p>
-<ul class="build simple">
-<li>Is it an instance attribute?</li>
-<li>Is it a class attribute?</li>
-<li>Is it a superclass attribute?</li>
-<li>Is it a super-superclass attribute?</li>
-<li>...</li>
-</ul>
-<div class="build container">
-<p>It can get more complicated...</p>
-<p><a class="reference external" href="http://www.python.org/getit/releases/2.3/mro/">http://www.python.org/getit/releases/2.3/mro/</a></p>
-<p><a class="reference external" href="http://python-history.blogspot.com/2010/06/method-resolution-order.html">http://python-history.blogspot.com/2010/06/method-resolution-order.html</a></p>
-</div>
-</div>
-<div class="section" id="what-are-python-classes-really">
-<h3>What are Python classes, really?<a class="headerlink" href="#what-are-python-classes-really" title="Permalink to this headline">¶</a></h3>
-<p>Putting aside the OO theory...</p>
-<div class="build container">
-<p>Python classes are:</p>
-<ul class="build simple">
-<li>Namespaces<ul>
-<li>One for the class object</li>
-<li>One for each instance</li>
-</ul>
-</li>
-<li>Attribute resolution order</li>
-<li>Auto tacking-on of <tt class="docutils literal"><span class="pre">self</span></tt> when methods are called</li>
-</ul>
-<p>That&#8217;s about it &#8211; really!</p>
-</div>
-</div>
-<div class="section" id="type-based-dispatch">
-<h3>Type-Based dispatch<a class="headerlink" href="#type-based-dispatch" title="Permalink to this headline">¶</a></h3>
-<p>You&#8217;ll see code that looks like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">A_Class</span><span class="p">):</span>
-    <span class="n">Do_something_with_other</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">Do_something_else</span>
-</pre></div>
-</div>
-<div class="build container">
-<p>Usually better to use &#8220;duck typing&#8221; (polymorphism)</p>
-<p>But when it&#8217;s called for:</p>
-<ul class="build simple">
-<li><tt class="docutils literal"><span class="pre">isinstance()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">issubclass()</span></tt></li>
-</ul>
-</div>
-<p>GvR: &#8220;Five Minute Multi- methods in Python&#8221;:</p>
-<p><a class="reference external" href="http://www.artima.com/weblogs/viewpost.jsp?thread=101605">http://www.artima.com/weblogs/viewpost.jsp?thread=101605</a></p>
-<p><a class="reference external" href="http://www.python.org/getit/releases/2.3/mro/">http://www.python.org/getit/releases/2.3/mro/</a></p>
-<p><a class="reference external" href="http://python-history.blogspot.com/2010/06/method-resolution-order.html">http://python-history.blogspot.com/2010/06/method-resolution-order.html</a></p>
-</div>
-<div class="section" id="wrap-up">
-<h3>Wrap Up<a class="headerlink" href="#wrap-up" title="Permalink to this headline">¶</a></h3>
-<p>Thinking OO in Python:</p>
-<div class="build container">
-<p>Think about what makes sense for your code:</p>
-<ul class="build simple">
-<li>Code re-use</li>
-<li>Clean APIs</li>
-<li>...</li>
-</ul>
-<p>Don&#8217;t be a slave to what OO is <em>supposed</em> to look like.</p>
-<p>Let OO work for you, not <em>create</em> work for you</p>
-</div>
-<div class="build container">
-<div class="container">
-<p><strong>The Art of Subclassing</strong>: <em>Raymond Hettinger</em></p>
-<p><a class="reference external" href="http://pyvideo.org/video/879/the-art-of-subclassing">http://pyvideo.org/video/879/the-art-of-subclassing</a></p>
-<p>&#8220;classes are for code re-use &#8211; not creating taxonomies&#8221;</p>
-</div>
-<div class="container">
-<p><strong>Stop Writing Classes</strong>: <em>Jack Diederich</em></p>
-<p><a class="reference external" href="http://pyvideo.org/video/880/stop-writing-classes">http://pyvideo.org/video/880/stop-writing-classes</a></p>
-<p>&#8220;If your class has only two methods and one of them is <tt class="docutils literal"><span class="pre">__init__</span></tt>,
-you don&#8217;t need a class&#8221;</p>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="homework">
-<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="task-17-html-renderer">
-<h3>Task 17: HTML Renderer<a class="headerlink" href="#task-17-html-renderer" title="Permalink to this headline">¶</a></h3>
-<div class="left container">
-<p>Build an html rendering system:</p>
-<p><a class="reference internal" href="homework/html_builder.html#homework-html-renderer"><em>HTML Renderer Homework Assignment</em></a></p>
-<p>You will build an html generator, using:</p>
-<ul class="simple">
-<li>A Base Class with a couple methods</li>
-<li>Subclasses overriding class attributes</li>
-<li>Subclasses overriding a method</li>
-<li>Subclasses overriding the <tt class="docutils literal"><span class="pre">__init__</span></tt></li>
-</ul>
-<p>These are the core OO approaches</p>
-</div>
-<p>Create a directory called <tt class="docutils literal"><span class="pre">session06</span></tt> in your student directory.
-Create a branch in your local repo called <cite>task17</cite> and switch to it (<cite>git checkout -b task17</cite>).</p>
-<p>Add your files
-to that branch, commit frequently, and push to it as you work,
-writing good commit messages.
-Then create a pull request to the main class repo,
-titled <tt class="docutils literal"><span class="pre">Task</span> <span class="pre">17</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">from</span> <span class="pre">Your</span> <span class="pre">Name</span></tt> where you should substitute your name for <tt class="docutils literal"><span class="pre">Your</span> <span class="pre">Name</span></tt>.</p>
-</div>
-<div class="section" id="task-18-investigate-session-7">
-<h3>Task 18: Investigate Session 7<a class="headerlink" href="#task-18-investigate-session-7" title="Permalink to this headline">¶</a></h3>
-<p>Read through the Session 7 slides.</p>
-<p><a class="reference external" href="http://codefellows.github.io/sea-c34-python/session07.html">http://codefellows.github.io/sea-c34-python/session07.html</a></p>
-<p>There are five sections. For each one, come up with one question.</p>
-<ul class="simple">
-<li>Testing (1 question)</li>
-<li>Multiple Inheritance (1 question)</li>
-<li>Properties (1 question)</li>
-<li>Class and Static Methods (1 question)</li>
-<li>Special (Magic) Methods (1 question)</li>
-</ul>
-<p>Write some
-Python code to answer these questions, one function per question.</p>
-<p>For each function, write a good <tt class="docutils literal"><span class="pre">docstring</span></tt> describing what
-question you are trying to answer.</p>
-<p>Put the functions in four separate modules (files) called
-<cite>testing.py</cite>, <cite>multiple.py</cite>, <cite>properties.py</cite>, <cite>static.py</cite>, and
-<cite>special.py</cite> in the
-<tt class="docutils literal"><span class="pre">session06</span></tt> subdirectory of your student directory.</p>
-<p>That is, you should have seven questions, and seven functions, total,
-spread out across three files.</p>
-<p>You may use everything you&#8217;ve learned
-so far as needed (including lists, tuples, slicing, iteration, functions, booleans, printing, modules, assertions, dictionaries,
-sets, exceptions, file reading/writing, paths, lambdas, keyword/variable arguments, comprehensions, and object-oriented programming).</p>
-<p>Create a branch in your local repo called <cite>task18</cite> and switch to it (<cite>git checkout task18</cite>).</p>
-<p>Add your files
-to that branch, commit and push, then create a pull request to
-the main class repo,
-titled <tt class="docutils literal"><span class="pre">Task</span> <span class="pre">18</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">from</span> <span class="pre">Your</span> <span class="pre">Name</span></tt> where you should substitute your name for <tt class="docutils literal"><span class="pre">Your</span> <span class="pre">Name</span></tt>.</p>
-<p>Finally, submit your assignment in Canvas by giving the URL of the pull request.</p>
-</div>
-</div>
 </div>
 
 
@@ -676,16 +596,23 @@ titled <tt class="docutils literal"><span class="pre">Task</span> <span class="p
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Session Six (Tentative): Intro to Object Oriented Programming</a><ul>
-<li><a class="reference internal" href="#subject-to-change">Subject to Change</a></li>
-<li><a class="reference internal" href="#review-questions">Review/Questions</a><ul>
-<li><a class="reference internal" href="#review-of-previous-class">Review of Previous Class</a></li>
-<li><a class="reference internal" href="#homework-review">Homework review</a></li>
-<li><a class="reference internal" href="#review-of-survey-feedback">Review of Survey Feedback</a></li>
+<li><a class="reference internal" href="#">Session Six: Arguments, Comprehensions, Intro to Object Oriented Programming</a><ul>
+<li><a class="reference internal" href="#advanced-argument-passing">Advanced Argument Passing</a><ul>
+<li><a class="reference internal" href="#keyword-arguments">Keyword arguments</a></li>
+<li><a class="reference internal" href="#function-arguments-in-variables">Function arguments in variables</a></li>
+<li><a class="reference internal" href="#function-parameters-in-variables">Function parameters in variables</a></li>
+<li><a class="reference internal" href="#passing-a-dict-to-the-string-format-method">Passing a dict to the <tt class="docutils literal"><span class="pre">string.format()</span></tt> method</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#list-and-dict-comprehensions">List and Dict Comprehensions</a><ul>
+<li><a class="reference internal" href="#list-comprehensions">List Comprehensions</a></li>
+<li><a class="reference internal" href="#set-comprehensions">Set Comprehensions</a></li>
+<li><a class="reference internal" href="#dict-comprehensions">Dict Comprehensions</a></li>
 <li><a class="reference internal" href="#questions">Questions</a></li>
 <li><a class="reference internal" href="#resources">Resources</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#change-in-classroom">Change in Classroom</a></li>
 <li><a class="reference internal" href="#object-oriented-programming">Object Oriented Programming</a><ul>
 <li><a class="reference internal" href="#more-detailed-reading">More Detailed Reading:</a></li>
 <li><a class="reference internal" href="#id3">Object Oriented Programming</a></li>
@@ -696,35 +623,13 @@ titled <tt class="docutils literal"><span class="pre">Task</span> <span class="p
 <li><a class="reference internal" href="#lab-homework">LAB / Homework</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#subclassing-inheritance">Subclassing/Inheritance</a><ul>
-<li><a class="reference internal" href="#inheritance">Inheritance</a></li>
-<li><a class="reference internal" href="#subclassing">Subclassing</a></li>
-<li><a class="reference internal" href="#overriding-attributes">Overriding attributes</a></li>
-<li><a class="reference internal" href="#overriding-methods">Overriding methods</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#more-on-subclassing">More on Subclassing</a><ul>
-<li><a class="reference internal" href="#overriding-init">Overriding <tt class="docutils literal"><span class="pre">__init__</span></tt></a></li>
-<li><a class="reference internal" href="#more-subclassing">More subclassing</a></li>
-<li><a class="reference internal" href="#when-to-subclass">When to Subclass</a></li>
-<li><a class="reference internal" href="#attribute-resolution-order">Attribute resolution order</a></li>
-<li><a class="reference internal" href="#what-are-python-classes-really">What are Python classes, really?</a></li>
-<li><a class="reference internal" href="#type-based-dispatch">Type-Based dispatch</a></li>
-<li><a class="reference internal" href="#wrap-up">Wrap Up</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#homework">Homework</a><ul>
-<li><a class="reference internal" href="#task-17-html-renderer">Task 17: HTML Renderer</a></li>
-<li><a class="reference internal" href="#task-18-investigate-session-7">Task 18: Investigate Session 7</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="session05.html"
-                        title="previous chapter">Homework Review</a></p>
+                        title="previous chapter">Session Five: Dictionaries, Files, Exceptions</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="session07.html"
                         title="next chapter">Session Seven (Tentative): Testing, More OO</a></p>
@@ -755,7 +660,7 @@ titled <tt class="docutils literal"><span class="pre">Task</span> <span class="p
           <a href="session07.html" title="Session Seven (Tentative): Testing, More OO"
              >next</a> |</li>
         <li class="right" >
-          <a href="session05.html" title="Homework Review"
+          <a href="session05.html" title="Session Five: Dictionaries, Files, Exceptions"
              >previous</a> |</li>
         <li><a href="index.html">F2 Python</a> &raquo;</li> 
       </ul>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Homework Review &mdash; Code Fellows F2 Python, March-April 2015</title>
+    <title>Session Five: Dictionaries, Files, Exceptions &mdash; Code Fellows F2 Python, March-April 2015</title>
     
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Code Fellows F2 Python, March-April 2015" href="index.html" />
-    <link rel="next" title="Session Six (Tentative): Intro to Object Oriented Programming" href="session06.html" />
+    <link rel="next" title="Session Six: Arguments, Comprehensions, Intro to Object Oriented Programming" href="session06.html" />
     <link rel="prev" title="Session Four: Sequences, While Loops, Strings, Input" href="session04.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -50,7 +50,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="session06.html" title="Session Six (Tentative): Intro to Object Oriented Programming"
+          <a href="session06.html" title="Session Six: Arguments, Comprehensions, Intro to Object Oriented Programming"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="session04.html" title="Session Four: Sequences, While Loops, Strings, Input"
@@ -64,9 +64,10 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <hr class="docutils" />
+  <div class="section" id="session-five-dictionaries-files-exceptions">
+<h1>Session Five: Dictionaries, Files, Exceptions<a class="headerlink" href="#session-five-dictionaries-files-exceptions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="homework-review">
-<h1>Homework Review<a class="headerlink" href="#homework-review" title="Permalink to this headline">¶</a></h1>
+<h2>Homework Review<a class="headerlink" href="#homework-review" title="Permalink to this headline">¶</a></h2>
 <ul class="left simple">
 <li>HW 5: Customizing Bash</li>
 <li>HW 6: Mathematical Series</li>
@@ -76,10 +77,10 @@
 <p>Ask for volunteers on Slack</p>
 </div>
 <div class="section" id="today-s-puzzle-trigrams">
-<h1>Today&#8217;s Puzzle: Trigrams<a class="headerlink" href="#today-s-puzzle-trigrams" title="Permalink to this headline">¶</a></h1>
+<h2>Today&#8217;s Puzzle: Trigrams<a class="headerlink" href="#today-s-puzzle-trigrams" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="id1">
-<h1>Today&#8217;s Puzzle: Trigrams<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h2>Today&#8217;s Puzzle: Trigrams<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>N-grams are a way to study word associations</p>
 <p><a class="reference external" href="https://books.google.com/ngrams">https://books.google.com/ngrams</a></p>
 <ul>
@@ -100,9 +101,9 @@ create a dictionary of trigrams.</li>
 </ul>
 </div>
 <div class="section" id="dictionaries-and-sets">
-<h1>Dictionaries and Sets<a class="headerlink" href="#dictionaries-and-sets" title="Permalink to this headline">¶</a></h1>
+<h2>Dictionaries and Sets<a class="headerlink" href="#dictionaries-and-sets" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="dictionary">
-<h2>Dictionary<a class="headerlink" href="#dictionary" title="Permalink to this headline">¶</a></h2>
+<h3>Dictionary<a class="headerlink" href="#dictionary" title="Permalink to this headline">¶</a></h3>
 <p>Python calls it a <tt class="docutils literal"><span class="pre">dict</span></tt></p>
 <p>Other languages call it:</p>
 <ul class="simple">
@@ -115,7 +116,7 @@ create a dictionary of trigrams.</li>
 </ul>
 </div>
 <div class="section" id="dictionary-constructors">
-<h2>Dictionary Constructors<a class="headerlink" href="#dictionary-constructors" title="Permalink to this headline">¶</a></h2>
+<h3>Dictionary Constructors<a class="headerlink" href="#dictionary-constructors" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="s">&#39;key1&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;key2&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 <span class="go">{&#39;key1&#39;: 3, &#39;key2&#39;: 5}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">([(</span><span class="s">&#39;key1&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),(</span><span class="s">&#39;key2&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
@@ -131,7 +132,7 @@ create a dictionary of trigrams.</li>
 </div>
 </div>
 <div class="section" id="dictionary-indexing">
-<h2>Dictionary Indexing<a class="headerlink" href="#dictionary-indexing" title="Permalink to this headline">¶</a></h2>
+<h3>Dictionary Indexing<a class="headerlink" href="#dictionary-indexing" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Brian&#39;</span><span class="p">,</span> <span class="s">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s">&#39;score&#39;</span><span class="p">]</span>
 <span class="go">42</span>
@@ -187,7 +188,7 @@ bucket with very few keys (often just one)</p>
 </div>
 </div>
 <div class="section" id="dictionary-ordering-not">
-<h2>Dictionary Ordering (not)<a class="headerlink" href="#dictionary-ordering-not" title="Permalink to this headline">¶</a></h2>
+<h3>Dictionary Ordering (not)<a class="headerlink" href="#dictionary-ordering-not" title="Permalink to this headline">¶</a></h3>
 <p>Dictionaries have no defined order</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [352]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;one&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;two&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;three&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
 <span class="gp">In [353]: </span><span class="n">d</span>
@@ -203,7 +204,7 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="dictionary-iterating">
-<h2>Dictionary Iterating<a class="headerlink" href="#dictionary-iterating" title="Permalink to this headline">¶</a></h2>
+<h3>Dictionary Iterating<a class="headerlink" href="#dictionary-iterating" title="Permalink to this headline">¶</a></h3>
 <p><tt class="docutils literal"><span class="pre">for</span></tt>  iterates over the keys</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [15]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Brian&#39;</span><span class="p">,</span> <span class="s">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
 
@@ -217,7 +218,7 @@ can be relied on.</p>
 <p>(note the different order...)</p>
 </div>
 <div class="section" id="dict-keys-and-values">
-<h2>dict keys and values<a class="headerlink" href="#dict-keys-and-values" title="Permalink to this headline">¶</a></h2>
+<h3>dict keys and values<a class="headerlink" href="#dict-keys-and-values" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [20]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Brian&#39;</span><span class="p">,</span> <span class="s">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
 
 <span class="gp">In [21]: </span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
@@ -232,7 +233,7 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="id2">
-<h2>dict keys and values<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h3>dict keys and values<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Iterating on everything</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [26]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Brian&#39;</span><span class="p">,</span> <span class="s">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
 
@@ -245,7 +246,7 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="dictionary-performance">
-<h2>Dictionary Performance<a class="headerlink" href="#dictionary-performance" title="Permalink to this headline">¶</a></h2>
+<h3>Dictionary Performance<a class="headerlink" href="#dictionary-performance" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>indexing is fast and constant time: O(1)</li>
 <li>Membership (<tt class="docutils literal"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">s</span></tt>) constant time: O(1)</li>
@@ -256,7 +257,7 @@ can be relied on.</p>
 <p><a class="reference external" href="http://wiki.python.org/moin/TimeComplexity">http://wiki.python.org/moin/TimeComplexity</a></p>
 </div>
 <div class="section" id="other-dict-operations">
-<h2>Other dict operations:<a class="headerlink" href="#other-dict-operations" title="Permalink to this headline">¶</a></h2>
+<h3>Other dict operations:<a class="headerlink" href="#other-dict-operations" title="Permalink to this headline">¶</a></h3>
 <p>See them all here:</p>
 <p><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#mapping-types-dict">https://docs.python.org/2/library/stdtypes.html#mapping-types-dict</a></p>
 <p>Is it in there?</p>
@@ -348,7 +349,7 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="sets">
-<h2>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h2>
+<h3>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h3>
 <p>A <tt class="docutils literal"><span class="pre">set</span></tt>  is an unordered collection of distinct values</p>
 <p>Essentially a dict with only keys</p>
 <p>Set Constructors</p>
@@ -370,7 +371,7 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="set-properties">
-<h2>Set Properties<a class="headerlink" href="#set-properties" title="Permalink to this headline">¶</a></h2>
+<h3>Set Properties<a class="headerlink" href="#set-properties" title="Permalink to this headline">¶</a></h3>
 <p><tt class="docutils literal"><span class="pre">Set</span></tt>  members must be hashable</p>
 <div class="build container">
 <p>Like dictionary keys &#8211; and for same reason (efficient lookup)</p>
@@ -384,7 +385,7 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="set-methods">
-<h2>Set Methods<a class="headerlink" href="#set-methods" title="Permalink to this headline">¶</a></h2>
+<h3>Set Methods<a class="headerlink" href="#set-methods" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c"># an arbitrary member</span>
 <span class="mi">1</span>
@@ -416,7 +417,7 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="frozen-set">
-<h2>Frozen Set<a class="headerlink" href="#frozen-set" title="Permalink to this headline">¶</a></h2>
+<h3>Frozen Set<a class="headerlink" href="#frozen-set" title="Permalink to this headline">¶</a></h3>
 <p>Another kind of set: <tt class="docutils literal"><span class="pre">frozenset</span></tt></p>
 <p>immutable &#8211; for use as a key in a dict
 (or another set...)</p>
@@ -430,7 +431,7 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="exceptions">
-<h1>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h1>
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
 <div class="left container">
 <p>Another Branching structure:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
@@ -443,7 +444,7 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="id3">
-<h2>Exceptions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h3>Exceptions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>Never Do this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
@@ -455,7 +456,7 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="id4">
-<h2>Exceptions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h3>Exceptions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>Use Exceptions, rather than your own tests:</p>
 <p>Don&#8217;t do this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">do_something</span><span class="p">()</span>
@@ -491,7 +492,7 @@ can be relied on.</p>
 <p>(much better debugging info when an error does occur)</p>
 </div>
 <div class="section" id="exceptions-finally">
-<h2>Exceptions &#8211; finally<a class="headerlink" href="#exceptions-finally" title="Permalink to this headline">¶</a></h2>
+<h3>Exceptions &#8211; finally<a class="headerlink" href="#exceptions-finally" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
@@ -505,7 +506,7 @@ can be relied on.</p>
 <p>The <tt class="docutils literal"><span class="pre">finally:</span></tt>  clause will always run</p>
 </div>
 <div class="section" id="exceptions-else">
-<h2>Exceptions &#8211; else<a class="headerlink" href="#exceptions-else" title="Permalink to this headline">¶</a></h2>
+<h3>Exceptions &#8211; else<a class="headerlink" href="#exceptions-else" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
@@ -521,7 +522,7 @@ can be relied on.</p>
 </dl>
 </div>
 <div class="section" id="exceptions-using-them">
-<h2>Exceptions &#8211; using them<a class="headerlink" href="#exceptions-using-them" title="Permalink to this headline">¶</a></h2>
+<h3>Exceptions &#8211; using them<a class="headerlink" href="#exceptions-using-them" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
@@ -540,7 +541,7 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="raising-exceptions">
-<h2>Raising Exceptions<a class="headerlink" href="#raising-exceptions" title="Permalink to this headline">¶</a></h2>
+<h3>Raising Exceptions<a class="headerlink" href="#raising-exceptions" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ZeroDivisionError</span><span class="p">(</span><span class="s">&quot;b can not be zero&quot;</span><span class="p">)</span>
@@ -557,7 +558,7 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="built-in-exceptions">
-<h2>Built in Exceptions<a class="headerlink" href="#built-in-exceptions" title="Permalink to this headline">¶</a></h2>
+<h3>Built in Exceptions<a class="headerlink" href="#built-in-exceptions" title="Permalink to this headline">¶</a></h3>
 <p>You can create your own custom exceptions, but...</p>
 <div class="build container">
 <div class="highlight-python"><div class="highlight"><pre><span class="n">exp</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtin__</span><span class="p">)</span> <span class="k">if</span> <span class="s">&quot;Error&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
@@ -585,9 +586,9 @@ can be relied on.</p>
 </div>
 </div>
 <div class="section" id="file-reading-and-writing">
-<h1>File Reading and Writing<a class="headerlink" href="#file-reading-and-writing" title="Permalink to this headline">¶</a></h1>
+<h2>File Reading and Writing<a class="headerlink" href="#file-reading-and-writing" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="files">
-<h2>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h2>
+<h3>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h3>
 <p>Text Files</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;secrets.txt&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
 <span class="n">secret_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -650,7 +651,7 @@ name is passed in (advanced usage!)</li>
 <p>(<a class="reference external" href="https://docs.python.org/2/library/io.html?highlight=io.open#io.open">https://docs.python.org/2/library/io.html?highlight=io.open#io.open</a>)</p>
 </div>
 <div class="section" id="file-reading">
-<h2>File Reading<a class="headerlink" href="#file-reading" title="Permalink to this headline">¶</a></h2>
+<h3>File Reading<a class="headerlink" href="#file-reading" title="Permalink to this headline">¶</a></h3>
 <p>Reading part of a file</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">header_size</span> <span class="o">=</span> <span class="mi">4096</span>
 <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;secrets.txt&#39;</span><span class="p">)</span>
@@ -677,7 +678,7 @@ name is passed in (advanced usage!)</li>
 </div>
 </div>
 <div class="section" id="file-writing">
-<h2>File Writing<a class="headerlink" href="#file-writing" title="Permalink to this headline">¶</a></h2>
+<h3>File Writing<a class="headerlink" href="#file-writing" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;output.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;this is line: </span><span class="si">%i</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">%</span><span class="n">i</span><span class="p">)</span>
@@ -685,7 +686,7 @@ name is passed in (advanced usage!)</li>
 </div>
 </div>
 <div class="section" id="file-methods">
-<h2>File Methods<a class="headerlink" href="#file-methods" title="Permalink to this headline">¶</a></h2>
+<h3>File Methods<a class="headerlink" href="#file-methods" title="Permalink to this headline">¶</a></h3>
 <p>Commonly Used Methods</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
@@ -701,10 +702,10 @@ name is passed in (advanced usage!)</li>
 </div>
 </div>
 <div class="section" id="trigram-puzzle">
-<h1>Trigram Puzzle<a class="headerlink" href="#trigram-puzzle" title="Permalink to this headline">¶</a></h1>
+<h2>Trigram Puzzle<a class="headerlink" href="#trigram-puzzle" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="left section" id="id5">
-<h1>Today&#8217;s Puzzle: Trigrams<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
+<h2>Today&#8217;s Puzzle: Trigrams<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>N-grams are a way to study word associations</p>
 <p><a class="reference external" href="https://books.google.com/ngrams">https://books.google.com/ngrams</a></p>
 <ul>
@@ -726,11 +727,11 @@ create a dictionary of trigrams.</p>
 </ul>
 </div>
 <div class="section" id="homework-for-next-time">
-<h1>Homework for Next Time<a class="headerlink" href="#homework-for-next-time" title="Permalink to this headline">¶</a></h1>
+<h2>Homework for Next Time<a class="headerlink" href="#homework-for-next-time" title="Permalink to this headline">¶</a></h2>
 <p>HW 12 : Update Mailroom Madness with dicts and files
 HW 13 : Trigrams</p>
 <div class="section" id="id6">
-<h2>Homework Review<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h3>Homework Review<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>Homework Questions?</p>
 <p>Solutions to the dict/set lab, and some others in the class repo in:
 <tt class="docutils literal"><span class="pre">Solutions</span></tt></p>
@@ -751,404 +752,8 @@ HW 13 : Trigrams</p>
 <p>(demo)</p>
 </div>
 </div>
-</div>
-<div class="section" id="advanced-argument-passing">
-<h1>Advanced Argument Passing<a class="headerlink" href="#advanced-argument-passing" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="keyword-arguments">
-<h2>Keyword arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h2>
-<p>When defining a function, you can specify only what you need &#8211; in any order</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [150]: </span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-<span class="gp">In [151]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-<span class="gp">   .....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">&quot; &quot;</span><span class="p">)</span>
-<span class="gp">   .....:</span>
-<span class="gp">In [152]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="go">1 2 3</span>
-<span class="gp">In [153]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">1 0 3</span>
-<span class="gp">In [154]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="go">1 2 3</span>
-</pre></div>
-</div>
-<p>A Common Idiom:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">do_something_different</span>
-    <span class="n">go_on_here</span>
-</pre></div>
-</div>
-<p>Can set defaults to variables</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [156]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="gp">In [157]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">):</span>
-<span class="go">    print(u&quot;x is: %s&quot; % x)</span>
-<span class="gp">   .....:</span>
-<span class="gp">In [158]: </span><span class="n">fun</span><span class="p">()</span>
-<span class="go">x is: 4</span>
-</pre></div>
-</div>
-<p>Defaults are evaluated when the function is defined</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [156]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="gp">In [157]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">):</span>
-<span class="go">    print(u&quot;x is: %s&quot; % x)</span>
-<span class="gp">   .....:</span>
-<span class="gp">In [158]: </span><span class="n">fun</span><span class="p">()</span>
-<span class="go">x is: 4</span>
-<span class="gp">In [159]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="gp">In [160]: </span><span class="n">fun</span><span class="p">()</span>
-<span class="go">x is: 4</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="function-arguments-in-variables">
-<h2>Function arguments in variables<a class="headerlink" href="#function-arguments-in-variables" title="Permalink to this headline">¶</a></h2>
-<p>function arguments are really just:</p>
-<div class="build container">
-<ul class="simple">
-<li>a tuple (positional arguments)</li>
-<li>a dict (keyword arguments)</li>
-</ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-   <span class="o">...</span><span class="p">:</span>     <span class="n">msg</span> <span class="o">=</span> <span class="s">u&quot;position: </span><span class="si">%s</span><span class="s">, </span><span class="si">%s</span><span class="s"> -- shape: </span><span class="si">%s</span><span class="s">, </span><span class="si">%s</span><span class="s">&quot;</span>
-   <span class="o">...</span><span class="p">:</span>     <span class="k">print</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
-   <span class="o">...</span><span class="p">:</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">size</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;h&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">position</span><span class="p">,</span> <span class="o">**</span><span class="n">size</span><span class="p">)</span>
-<span class="n">position</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="o">--</span> <span class="n">shape</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="function-parameters-in-variables">
-<h2>Function parameters in variables<a class="headerlink" href="#function-parameters-in-variables" title="Permalink to this headline">¶</a></h2>
-<p>You can also pull the parameters out in the function as a tuple and a dict:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">u&quot;the positional arguments are: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
-<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">u&quot;the optional arguments are: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
-<span class="gp">   ....:</span>
-<span class="gp">In [11]: </span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">this</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">that</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="go">the positional arguments are: (2, 3)</span>
-<span class="go">the optional arguments are: {&#39;this&#39;: 5, &#39;that&#39;: 7}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="passing-a-dict-to-the-string-format-method">
-<h2>Passing a dict to the <tt class="docutils literal"><span class="pre">string.format()</span></tt> method<a class="headerlink" href="#passing-a-dict-to-the-string-format-method" title="Permalink to this headline">¶</a></h2>
-<p>Now that you know that keyword args are really a dict, you can do this nifty
-trick:</p>
-<div class="build container">
-<div class="container">
-<p>The <tt class="docutils literal"><span class="pre">format</span></tt> method takes keyword arguments:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [24]: </span><span class="s">u&quot;My name is {first} {last}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="s">u&quot;Ewing&quot;</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="s">u&quot;Cris&quot;</span><span class="p">)</span>
-<span class="gh">Out[24]: </span><span class="go">u&#39;My name is Cris Ewing&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="container">
-<p>Build a dict of the keys and values:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [25]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&quot;last&quot;</span><span class="p">:</span> <span class="s">u&quot;Ewing&quot;</span><span class="p">,</span> <span class="s">u&quot;first&quot;</span><span class="p">:</span> <span class="s">u&quot;Cris&quot;</span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="container">
-<p>And pass to <tt class="docutils literal"><span class="pre">format()``with</span> <span class="pre">``**</span></tt></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [26]: </span><span class="s">u&quot;My name is {first} {last}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>
-<span class="gh">Out[26]: </span><span class="go">u&#39;My name is Paul Pham&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="lab">
-<h2>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s do this right now:</p>
-<div class="build container">
-<p>keyword arguments</p>
-<ul class="build simple">
-<li>Write a function that has four optional parameters (with defaults):<ul>
-<li>foreground_color</li>
-<li>background_color</li>
-<li>link_color</li>
-<li>visited_link_color</li>
-</ul>
-</li>
-<li>Have it print the colors (use strings for the colors)</li>
-<li>Call it with a couple different parameters set</li>
-<li>Have it pull the parameters out with <tt class="docutils literal"><span class="pre">*args,</span> <span class="pre">**kwargs</span></tt></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="section" id="a-bit-more-on-mutability-and-copies">
-<h1>A bit more on mutability (and copies)<a class="headerlink" href="#a-bit-more-on-mutability-and-copies" title="Permalink to this headline">¶</a></h1>
-<p class="left">We&#8217;ve talked about this: mutable objects can have their contents changed in
-place.</p>
-<div class="left build container">
-<p>Immutable objects can not.</p>
-<p>This has implications when you have a container with mutable objects in it:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [28]: </span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">]</span> <span class="p">]</span>
-</pre></div>
-</div>
-<p>one way to make a copy of a list:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [29]: </span><span class="n">list2</span> <span class="o">=</span> <span class="n">list1</span><span class="p">[:]</span>
-<span class="gp">In [30]: </span><span class="n">list2</span> <span class="ow">is</span> <span class="n">list1</span>
-<span class="gh">Out[30]: </span><span class="go">False</span>
-</pre></div>
-</div>
-<p>they are different lists.</p>
-</div>
-<div class="section" id="mutable-objects">
-<h2>mutable objects<a class="headerlink" href="#mutable-objects" title="Permalink to this headline">¶</a></h2>
-<p>What if we set an element to a new value?</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [31]: </span><span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
-
-<span class="gp">In [32]: </span><span class="n">list1</span>
-<span class="gh">Out[32]: </span><span class="go">[[5, 6, 7], [&#39;a&#39;, &#39;b&#39;]]</span>
-
-<span class="gp">In [33]: </span><span class="n">list2</span>
-<span class="gh">Out[33]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;]]</span>
-</pre></div>
-</div>
-<p>So they are independent.</p>
-</div>
-<p>But what if we mutate an element?</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [34]: </span><span class="n">list1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
-
-<span class="gp">In [35]: </span><span class="n">list1</span>
-<span class="gh">Out[35]: </span><span class="go">[[5, 6, 7], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
-
-<span class="gp">In [36]: </span><span class="n">list2</span>
-<span class="gh">Out[36]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
-</pre></div>
-</div>
-<p>uh oh! mutating an element in one list mutated the one in the other list.</p>
-</div>
-<p>Why is that?</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [38]: </span><span class="n">list1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="n">list2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="gh">Out[38]: </span><span class="go">True</span>
-</pre></div>
-</div>
-<p>The elements are the same object!</p>
-<p>This is known as a &#8220;shallow&#8221; copy &#8211; Python doesn&#8217;t want to copy more than
-it needs to, so in this case, it makes a new list, but does not make copies
-of the contents.</p>
-<p>Same for dicts (and any container type)</p>
-<p>If the elements are immutable, it doesn&#8217;t really make a differnce &#8211; but be
-very careful with mutable elements.</p>
-</div>
-</div>
-<div class="section" id="the-copy-module">
-<h2>The copy module<a class="headerlink" href="#the-copy-module" title="Permalink to this headline">¶</a></h2>
-<p>most objects have a way to make copies (<tt class="docutils literal"><span class="pre">dict.copy()</span></tt> for instance).</p>
-<div class="build container">
-<p>but if not, you can use the <tt class="docutils literal"><span class="pre">copy</span></tt> module to make a copy:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [39]: </span><span class="kn">import</span> <span class="nn">copy</span>
-
-<span class="gp">In [40]: </span><span class="n">list3</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">list2</span><span class="p">)</span>
-
-<span class="gp">In [41]: </span><span class="n">list3</span>
-<span class="gh">Out[41]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
-</pre></div>
-</div>
-<p>This is <em>also</em> a shallow copy.</p>
-</div>
-<p>But there is another option:</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="n">list1</span>
-<span class="gh">Out[3]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
-
-<span class="gp">In [4]: </span><span class="n">list2</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span>
-
-<span class="gp">In [5]: </span><span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="gp">In [6]: </span><span class="n">list1</span>
-<span class="gh">Out[6]: </span><span class="go">[[1, 2, 3, 4], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
-
-<span class="gp">In [7]: </span><span class="n">list2</span>
-<span class="gh">Out[7]: </span><span class="go">[[1, 2, 3], [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]]</span>
-</pre></div>
-</div>
-<p><tt class="docutils literal"><span class="pre">deepcopy</span></tt> recurses through the object, making copies of everything as it goes.</p>
-</div>
-<p>I happened on this thread on stack overflow:</p>
-<p><a class="reference external" href="http://stackoverflow.com/questions/3975376/understanding-dict-copy-shallow-or-deep">http://stackoverflow.com/questions/3975376/understanding-dict-copy-shallow-or-deep</a></p>
-<div class="build container">
-<p>The OP is pretty confused &#8211; can you sort it out?</p>
-<p>Make sure you understand the difference between a reference, a shallow
-copy, and a deep copy.</p>
-</div>
-</div>
-<div class="section" id="mutables-as-default-arguments">
-<h2>Mutables as default arguments:<a class="headerlink" href="#mutables-as-default-arguments" title="Permalink to this headline">¶</a></h2>
-<p>Another &#8220;gotcha&#8221; is using mutables as default arguments:</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="p">[]):</span>
-<span class="gp">   ....: </span>    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="gp">   ....:</span>
-</pre></div>
-</div>
-<p>This makes sense: maybe you&#8217;d pass in a list, but the default is an empty list.</p>
-<div class="container">
-<p>But:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [12]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">[3]</span>
-
-<span class="gp">In [13]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="go">[3, 4]</span>
-</pre></div>
-</div>
-</div>
-<p>Huh?!</p>
-</div>
-<p>Remember:</p>
-<ul class="build simple">
-<li>the default argument is defined when the function is created</li>
-<li>there will be <em>only one list</em></li>
-<li>every time the function is called, the <em>same one list</em> is used.</li>
-</ul>
-<div class="build container">
-<p>The standard practice for such a mutable default argument:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [15]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-<span class="gp">   ....: </span>        <span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">   ....: </span>    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="gp">In [16]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">[3]</span>
-<span class="gp">In [17]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="go">[4]</span>
-</pre></div>
-</div>
-<p>You get a new list every time the function is called</p>
-</div>
-</div>
-</div>
-<div class="section" id="list-and-dict-comprehensions">
-<h1>List and Dict Comprehensions<a class="headerlink" href="#list-and-dict-comprehensions" title="Permalink to this headline">¶</a></h1>
-<div class="left container">
-<p>A bit of functional programming</p>
-<div class="build container">
-<p>consider this common <tt class="docutils literal"><span class="pre">for</span></tt> loop structure:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
-    <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>This can be expressed with a single line using a &#8220;list comprehension&#8221;</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="list-comprehensions">
-<h2>List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h2>
-<p>What about nested for loops?</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">var2</span> <span class="ow">in</span> <span class="n">a_list2</span><span class="p">:</span>
-        <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Can also be expressed in one line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">new_list</span> <span class="o">=</span>  <span class="p">[</span><span class="n">exp</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span> <span class="k">for</span> <span class="n">var2</span> <span class="ow">in</span> <span class="n">a_list2</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>You get the &#8220;outer product&#8221;, i.e. all combinations.</p>
-<p>(demo)</p>
-</div>
-<p>But usually you at least have a conditional in the loop:</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">something_is_true</span><span class="p">:</span>
-        <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>You can add a conditional to the comprehension:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expr</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span> <span class="k">if</span> <span class="n">something_is_true</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>(demo)</p>
-</div>
-<p>Examples:</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [341]: </span><span class="p">[</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
-<span class="gh">Out[341]: </span><span class="go">[0, 1, 4]</span>
-
-<span class="gp">In [342]: </span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
-<span class="gh">Out[342]: </span><span class="go">[5, 6, 6, 7, 7, 8]</span>
-
-<span class="gp">In [343]: </span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
-<span class="gh">Out[343]: </span><span class="go">[0, 4, 8]</span>
-</pre></div>
-</div>
-<p>Remember this from last week?</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtin__</span><span class="p">)</span> <span class="k">if</span> <span class="s">&quot;Error&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
-<span class="p">[</span><span class="s">&#39;ArithmeticError&#39;</span><span class="p">,</span>
- <span class="s">&#39;AssertionError&#39;</span><span class="p">,</span>
- <span class="s">&#39;AttributeError&#39;</span><span class="p">,</span>
- <span class="o">....</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="set-comprehensions">
-<h2>Set Comprehensions<a class="headerlink" href="#set-comprehensions" title="Permalink to this headline">¶</a></h2>
-<p>You can do it with sets, too:</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="n">new_set</span> <span class="o">=</span> <span class="p">{</span><span class="n">value</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">}</span>
-</pre></div>
-</div>
-<p>the same as this <tt class="docutils literal"><span class="pre">for</span></tt> loop:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">new_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">:</span>
-    <span class="n">new_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>Example: finding all the vowels in a string...</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [19]: </span><span class="n">s</span> <span class="o">=</span> <span class="s">&quot;a not very long string&quot;</span>
-
-<span class="gp">In [20]: </span><span class="n">vowels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">&#39;aeiou&#39;</span><span class="p">)</span>
-
-<span class="gp">In [21]: </span><span class="p">{</span> <span class="n">let</span> <span class="k">for</span> <span class="n">let</span> <span class="ow">in</span> <span class="n">s</span> <span class="k">if</span> <span class="n">let</span> <span class="ow">in</span> <span class="n">vowels</span> <span class="p">}</span>
-<span class="gh">Out[21]: </span><span class="go">{&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;}</span>
-</pre></div>
-</div>
-<p>Side note: why did I do <tt class="docutils literal"><span class="pre">set('aeiou')</span></tt> rather than just <cite>aeiou</cite>?</p>
-</div>
-</div>
-<div class="section" id="dict-comprehensions">
-<h2>Dict Comprehensions<a class="headerlink" href="#dict-comprehensions" title="Permalink to this headline">¶</a></h2>
-<p>Also with dictionaries</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="n">key</span><span class="p">:</span><span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">}</span>
-</pre></div>
-</div>
-<p>the same as this <tt class="docutils literal"><span class="pre">for</span></tt> loop:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">:</span>
-    <span class="n">new_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-</pre></div>
-</div>
-</div>
-<p>Example</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [22]: </span><span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="s">&quot;this_</span><span class="si">%i</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)}</span>
-<span class="gh">Out[22]: </span><span class="go">{0: &#39;this_0&#39;, 1: &#39;this_1&#39;, 2: &#39;this_2&#39;,</span>
-<span class="go">          3: &#39;this_3&#39;, 4: &#39;this_4&#39;}</span>
-</pre></div>
-</div>
-<p>Can you do the same thing with the <tt class="docutils literal"><span class="pre">dict()</span></tt> constructor?</p>
-</div>
-</div>
 <div class="section" id="recommended-reading">
-<h2>Recommended Reading<a class="headerlink" href="#recommended-reading" title="Permalink to this headline">¶</a></h2>
+<h3>Recommended Reading<a class="headerlink" href="#recommended-reading" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>LPTHW: Ex 40 - 45</li>
 </ul>
@@ -1157,6 +762,7 @@ copy, and a deep copy.</p>
 <li>Dive Into Python: chapter 4, 5</li>
 </ul>
 <p><a class="reference external" href="http://www.diveintopython.net/toc/index.html">http://www.diveintopython.net/toc/index.html</a></p>
+</div>
 </div>
 </div>
 
@@ -1168,7 +774,8 @@ copy, and a deep copy.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Homework Review</a></li>
+<li><a class="reference internal" href="#">Session Five: Dictionaries, Files, Exceptions</a><ul>
+<li><a class="reference internal" href="#homework-review">Homework Review</a></li>
 <li><a class="reference internal" href="#today-s-puzzle-trigrams">Today&#8217;s Puzzle: Trigrams</a></li>
 <li><a class="reference internal" href="#id1">Today&#8217;s Puzzle: Trigrams</a></li>
 <li><a class="reference internal" href="#dictionaries-and-sets">Dictionaries and Sets</a><ul>
@@ -1208,27 +815,9 @@ copy, and a deep copy.</p>
 <li><a class="reference internal" href="#id5">Today&#8217;s Puzzle: Trigrams</a></li>
 <li><a class="reference internal" href="#homework-for-next-time">Homework for Next Time</a><ul>
 <li><a class="reference internal" href="#id6">Homework Review</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#advanced-argument-passing">Advanced Argument Passing</a><ul>
-<li><a class="reference internal" href="#keyword-arguments">Keyword arguments</a></li>
-<li><a class="reference internal" href="#function-arguments-in-variables">Function arguments in variables</a></li>
-<li><a class="reference internal" href="#function-parameters-in-variables">Function parameters in variables</a></li>
-<li><a class="reference internal" href="#passing-a-dict-to-the-string-format-method">Passing a dict to the <tt class="docutils literal"><span class="pre">string.format()</span></tt> method</a></li>
-<li><a class="reference internal" href="#lab">LAB</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#a-bit-more-on-mutability-and-copies">A bit more on mutability (and copies)</a><ul>
-<li><a class="reference internal" href="#mutable-objects">mutable objects</a></li>
-<li><a class="reference internal" href="#the-copy-module">The copy module</a></li>
-<li><a class="reference internal" href="#mutables-as-default-arguments">Mutables as default arguments:</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#list-and-dict-comprehensions">List and Dict Comprehensions</a><ul>
-<li><a class="reference internal" href="#list-comprehensions">List Comprehensions</a></li>
-<li><a class="reference internal" href="#set-comprehensions">Set Comprehensions</a></li>
-<li><a class="reference internal" href="#dict-comprehensions">Dict Comprehensions</a></li>
 <li><a class="reference internal" href="#recommended-reading">Recommended Reading</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1238,7 +827,7 @@ copy, and a deep copy.</p>
                         title="previous chapter">Session Four: Sequences, While Loops, Strings, Input</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="session06.html"
-                        title="next chapter">Session Six (Tentative): Intro to Object Oriented Programming</a></p>
+                        title="next chapter">Session Six: Arguments, Comprehensions, Intro to Object Oriented Programming</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -1263,7 +852,7 @@ copy, and a deep copy.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="session06.html" title="Session Six (Tentative): Intro to Object Oriented Programming"
+          <a href="session06.html" title="Session Six: Arguments, Comprehensions, Intro to Object Oriented Programming"
              >next</a> |</li>
         <li class="right" >
           <a href="session04.html" title="Session Four: Sequences, While Loops, Strings, Input"

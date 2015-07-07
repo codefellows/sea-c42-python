@@ -3,53 +3,325 @@
    hieroglyph-quickstart on Wed Apr  2 18:42:06 2014.
 
 *************************************************
-Session Six (Tentative): Intro to Object Oriented Programming
+Session Six: Arguments, Comprehensions, Intro to Object Oriented Programming
 *************************************************
 
-Classes, instances, attributes, and subclassing
+Advanced Argument Passing
+=========================
 
-Subject to Change
-================
+Keyword arguments
+-----------------
 
-This material is subject to change before
-Session Six on July 1st, 2015.
+When defining a function, you can specify only what you need -- in any order
 
-Review/Questions
-================
+.. code-block:: ipython
 
-Review of Previous Class
-------------------------
+    In [150]: from __future__ import print_function
+    In [151]: def fun(x, y=0, z=0):
+       .....:     print(x, y, z, end=" ")
+       .....:
+    In [152]: fun(1, 2, 3)
+    1 2 3
+    In [153]: fun(1, z=3)
+    1 0 3
+    In [154]: fun(1, z=3, y=2)
+    1 2 3
 
-.. rst-class:: build
+.. nextslide::
 
-* Argument Passing: ``*args``, ``**kwargs``
-* comprehensions
-* ``lambda``
-* Solutions to the FizzBuzz problem.
+A Common Idiom:
 
-Homework review
----------------
+.. code-block:: python
 
-* LBYL vs. EAFP
+    def fun(x, y=None):
+        if y is None:
+            do_something_different
+        go_on_here
 
-http://stackoverflow.com/questions/404795/lbyl-vs-eafp-in-java
+.. nextslide::
 
-* Line Indentations
+Can set defaults to variables
 
-*
+.. code-block:: ipython
 
-Other Homework Questions?
+    In [156]: y = 4
+    In [157]: def fun(x=y):
+        print(u"x is: %s" % x)
+       .....:
+    In [158]: fun()
+    x is: 4
+
+.. nextslide:: But Remember
+
+Defaults are evaluated when the function is defined
+
+.. code-block:: ipython
+
+    In [156]: y = 4
+    In [157]: def fun(x=y):
+        print(u"x is: %s" % x)
+       .....:
+    In [158]: fun()
+    x is: 4
+    In [159]: y = 6
+    In [160]: fun()
+    x is: 4
+
+Function arguments in variables
+-------------------------------
+
+function arguments are really just:
 
 .. rst-class:: build
 .. container::
 
-Review of Survey Feedback
--------------------------
+    * a tuple (positional arguments)
+    * a dict (keyword arguments)
 
-* Introductory readings
-* More up-front explanation in class
-* More connection between homework and in-class exercises
-* Faster homework grading
+    .. code-block:: python
+
+        In [1]: def f(x, y, w=0, h=0):
+           ...:     msg = u"position: %s, %s -- shape: %s, %s"
+           ...:     print(msg % (x, y, w, h))
+           ...:
+        In [2]: position = (3, 4)
+        In [3]: size = {'h': 10, 'w': 20}
+        In [4]: f(*position, **size)
+        position: 3, 4 -- shape: 20, 10
+
+Function parameters in variables
+--------------------------------
+
+You can also pull the parameters out in the function as a tuple and a dict:
+
+.. code-block:: ipython
+
+    In [10]: def f(*args, **kwargs):
+       ....:     print(u"the positional arguments are: %s" % unicode(args))
+       ....:     print(u"the optional arguments are: %s" % unicode(kwargs))
+       ....:
+    In [11]: f(2, 3, this=5, that=7)
+    the positional arguments are: (2, 3)
+    the optional arguments are: {'this': 5, 'that': 7}
+
+Passing a dict to the ``string.format()`` method
+------------------------------------------------
+
+Now that you know that keyword args are really a dict, you can do this nifty
+trick:
+
+.. rst-class:: build
+.. container::
+
+    .. container::
+
+        The ``format`` method takes keyword arguments:
+
+        .. code-block:: ipython
+
+            In [24]: u"My name is {first} {last}".format(last=u"Ewing", first=u"Cris")
+            Out[24]: u'My name is Cris Ewing'
+
+    .. container::
+
+        Build a dict of the keys and values:
+
+        .. code-block:: ipython
+
+            In [25]: d = {u"last": u"Ewing", u"first": u"Cris"}
+
+    .. container::
+
+        And pass to ``format()``with ``**``
+
+        .. code-block:: ipython
+
+            In [26]: u"My name is {first} {last}".format(**d)
+            Out[26]: u'My name is Paul Pham'
+
+
+
+
+List and Dict Comprehensions
+============================
+
+.. rst-class:: left
+.. container::
+
+    A bit of functional programming
+
+    .. rst-class:: build
+    .. container::
+
+        consider this common ``for`` loop structure:
+
+        .. code-block:: python
+
+            new_list = []
+            for variable in a_list:
+                new_list.append(expression)
+
+        This can be expressed with a single line using a "list comprehension"
+
+        .. code-block:: python
+
+            new_list = [expression for variable in a_list]
+
+List Comprehensions
+-------------------
+
+What about nested for loops?
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: python
+
+        new_list = []
+        for var in a_list:
+            for var2 in a_list2:
+                new_list.append(expression)
+
+    Can also be expressed in one line:
+
+    .. code-block:: python
+
+        new_list =  [exp for var in a_list for var2 in a_list2]
+
+    You get the "outer product", i.e. all combinations.
+
+    (demo)
+
+.. nextslide::
+
+But usually you at least have a conditional in the loop:
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: python
+
+        new_list = []
+        for variable in a_list:
+            if something_is_true:
+                new_list.append(expression)
+
+    You can add a conditional to the comprehension:
+
+    .. code-block:: python
+
+        new_list = [expr for var in a_list if something_is_true]
+
+    (demo)
+
+.. nextslide::
+
+Examples:
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: ipython
+
+        In [341]: [x ** 2 for x in range(3)]
+        Out[341]: [0, 1, 4]
+
+        In [342]: [x + y for x in range(3) for y in range(5, 7)]
+        Out[342]: [5, 6, 6, 7, 7, 8]
+
+        In [343]: [x * 2 for x in range(6) if not x % 2]
+        Out[343]: [0, 4, 8]
+
+    Remember this from last week?
+
+    .. code-block:: python
+
+        [name for name in dir(__builtin__) if "Error" in name]
+        ['ArithmeticError',
+         'AssertionError',
+         'AttributeError',
+         ....
+
+
+Set Comprehensions
+------------------
+
+You can do it with sets, too:
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: python
+
+        new_set = {value for value in a_sequence}
+
+
+    the same as this ``for`` loop:
+
+    .. code-block:: python
+
+        new_set = set()
+        for value in a_sequence:
+            new_set.add(value)
+
+.. nextslide::
+
+Example: finding all the vowels in a string...
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: ipython
+
+        In [19]: s = "a not very long string"
+
+        In [20]: vowels = set('aeiou')
+
+        In [21]: { let for let in s if let in vowels }
+        Out[21]: {'a', 'e', 'i', 'o'}
+
+    Side note: why did I do ``set('aeiou')`` rather than just `aeiou`\ ?
+
+
+Dict Comprehensions
+-------------------
+
+Also with dictionaries
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: python
+
+        new_dict = { key:value for key, value in a_sequence}
+
+
+    the same as this ``for`` loop:
+
+    .. code-block:: python
+
+        new_dict = {}
+        for key, value in a_sequence:
+            new_dict[key] = value
+
+.. nextslide::
+
+Example
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: ipython
+
+        In [22]: {i: "this_%i" % i for i in range(5)}
+        Out[22]: {0: 'this_0', 1: 'this_1', 2: 'this_2',
+                  3: 'this_3', 4: 'this_4'}
+
+    Can you do the same thing with the ``dict()`` constructor?
+
+Classes, instances, attributes, and subclassing
+
+
 
 Questions
 -------------------------
@@ -84,6 +356,17 @@ Django Resources
 
 * `Tango With Django <http://www.tangowithdjango.com>`_
 * `The official Django tutorial <https://docs.djangoproject.com/en/1.7/intro/tutorial01/>`_
+
+
+Change in Classroom
+===================
+
+For our last week we will be in The Hardy (the East classroom), at the opposite
+end of the basement.
+
+Check in attendance for today!
+
+Please fill out survey responses.
 
 
 Object Oriented Programming
@@ -481,393 +764,3 @@ Let's say you need to render some html..
     :ref:`homework_html_renderer`
 
     Let's see if we can do step 1. in class...
-
-Subclassing/Inheritance
-=======================
-
-Inheritance
------------
-
-In object-oriented programming (OOP), inheritance is a way to reuse code of
-existing objects, or to establish a subtype from an existing object.
-
-
-Objects are defined by classes, classes can inherit attributes and behavior
-from pre-existing classes called base classes or super classes.
-
-The resulting classes are known as derived classes or subclasses.
-
-(http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29)
-
-Subclassing
------------
-
-A subclass "inherits" all the attributes (methods, etc) of the parent class.
-
-You can then change ("override") some or all of the attributes to change the
-behavior.
-
-You can also add new attributes to extend the behavior.
-
-The simplest subclass in Python:
-
-.. code-block:: python
-
-    class A_subclass(The_superclass):
-        pass
-
-``A_subclass``  now has exactly the same behavior as ``The_superclass``
-
-NOTE: when we put ``object`` in there, it means we are deriving from object --
-getting core functionality of all objects.
-
-Overriding attributes
----------------------
-
-Overriding is as simple as creating a new attribute with the same name:
-
-.. code-block:: python
-
-    class Circle(object):
-        color = "red"
-
-    ...
-
-    class NewCircle(Circle):
-        color = "blue"
-    >>> nc = NewCircle
-    >>> print nc.color
-    blue
-
-
-all the ``self``  instances will have the new attribute.
-
-Overriding methods
-------------------
-
-Same thing, but with methods (remember, a method *is* an attribute in python)
-
-.. code-block:: python
-
-    class Circle(object):
-    ...
-        def grow(self, factor=2):
-            """grows the circle's diameter by factor"""
-            self.diameter = self.diameter * factor
-    ...
-
-    class NewCircle(Circle):
-    ...
-        def grow(self, factor=2):
-            """grows the area by factor..."""
-            self.diameter = self.diameter * math.sqrt(2)
-
-
-all the instances will have the new method
-
-.. nextslide::
-
-A Program Design Suggestion:
-
-    whenever you override a method, the interface of the new method should be
-    the same as the old.  It should take the same parameters, return the same
-    type, and obey the same preconditions and postconditions.
-
-.. nextslide::
-
-A Program Design Suggestion
-
-    If you obey this rule, you will find that any function designed to work
-    with an instance of a superclass, like a Deck, will also work with
-    instances of subclasses like a Hand or PokerHand.  If you violate this
-    rule, your code will collapse like (sorry) a house of cards.
-
-    -- [ThinkPython 18.10]
-
-( Demo of class vs. instance attributes )
-
-
-More on Subclassing
-===================
-
-Overriding ``__init__``
------------------------
-
-Wanting or needing to override ``__init__`` is very common
-
-.. rst-class:: build
-.. container::
-
-    You often need to call the super class ``__init__``  as well
-
-    Think "everything the parent does, plus this stuff too"
-
-    .. code-block:: python
-
-        class Circle(object):
-            color = "red"
-            def __init__(self, diameter):
-                self.diameter = diameter
-        ...
-        class CircleR(Circle):
-            def __init__(self, radius):
-                diameter = radius*2
-                Circle.__init__(self, diameter)
-
-    exception to: "don't change the method signature" rule.
-
-More subclassing
-----------------
-
-You can also call the superclass' other methods:
-
-.. code-block:: python
-
-    class Circle(object):
-    ...
-        def get_area(self, diameter):
-            return math.pi * (diameter/2.0)**2
-
-
-    class CircleR2(Circle):
-    ...
-        def get_area(self):
-            return Circle.get_area(self, self.radius*2)
-
-There is nothing special about ``__init__``  except that it gets called
-automatically when you instantiate an instance.
-
-
-When to Subclass
-----------------
-
-.. rst-class:: build
-.. container::
-
-    "Is a" relationship: Subclass/inheritance
-
-    "Has a" relationship: Composition
-
-.. nextslide::
-
-"Is a" vs "Has a"
-
-.. rst-class:: build
-.. container::
-
-    You may have a class that needs to accumulate an arbitrary number of
-    objects.
-
-    A list can do that -- so should you subclass list?
-
-    Ask yourself:
-
-    -- **Is** your class a list (with some extra functionality)?
-
-    or
-
-    -- Does you class **have** a list?
-
-    You only want to subclass list if your class could be used anywhere a list can
-    be used.
-
-Attribute resolution order
---------------------------
-
-When you access an attribute:
-
-``An_Instance.something``
-
-Python looks for it in this order:
-
-.. rst-class:: build
-
-* Is it an instance attribute?
-* Is it a class attribute?
-* Is it a superclass attribute?
-* Is it a super-superclass attribute?
-* ...
-
-.. rst-class:: build
-.. container::
-
-    It can get more complicated...
-
-    http://www.python.org/getit/releases/2.3/mro/
-
-    http://python-history.blogspot.com/2010/06/method-resolution-order.html
-
-
-What are Python classes, really?
---------------------------------
-
-Putting aside the OO theory...
-
-.. rst-class:: build
-.. container::
-
-    Python classes are:
-
-    .. rst-class:: build
-
-    * Namespaces
-
-      * One for the class object
-      * One for each instance
-
-    * Attribute resolution order
-    * Auto tacking-on of ``self`` when methods are called
-
-    That's about it -- really!
-
-Type-Based dispatch
--------------------
-
-You'll see code that looks like this:
-
-.. code-block:: python
-
-      if isinstance(other, A_Class):
-          Do_something_with_other
-      else:
-          Do_something_else
-
-.. rst-class:: build
-.. container::
-
-    Usually better to use "duck typing" (polymorphism)
-
-    But when it's called for:
-
-    .. rst-class:: build
-
-    * ``isinstance()``
-    * ``issubclass()``
-
-.. nextslide::
-
-GvR: "Five Minute Multi- methods in Python":
-
-http://www.artima.com/weblogs/viewpost.jsp?thread=101605
-
-http://www.python.org/getit/releases/2.3/mro/
-
-http://python-history.blogspot.com/2010/06/method-resolution-order.html
-
-
-Wrap Up
--------
-
-Thinking OO in Python:
-
-.. rst-class:: build
-.. container::
-
-    Think about what makes sense for your code:
-
-    .. rst-class:: build
-
-    * Code re-use
-    * Clean APIs
-    * ...
-
-    Don't be a slave to what OO is *supposed* to look like.
-
-    Let OO work for you, not *create* work for you
-
-.. nextslide:: OO in Python:
-
-.. rst-class:: build
-.. container::
-
-    .. container::
-
-        **The Art of Subclassing**: *Raymond Hettinger*
-
-        http://pyvideo.org/video/879/the-art-of-subclassing
-
-        "classes are for code re-use -- not creating taxonomies"
-
-    .. container::
-
-        **Stop Writing Classes**: *Jack Diederich*
-
-        http://pyvideo.org/video/880/stop-writing-classes
-
-        "If your class has only two methods and one of them is ``__init__``,
-        you don't need a class"
-
-Homework
-========
-
-Task 17: HTML Renderer
-----------------------
-
-.. rst-class:: left
-.. container::
-
-    Build an html rendering system:
-
-    :ref:`homework_html_renderer`
-
-    You will build an html generator, using:
-
-    * A Base Class with a couple methods
-    * Subclasses overriding class attributes
-    * Subclasses overriding a method
-    * Subclasses overriding the ``__init__``
-
-    These are the core OO approaches
-
-Create a directory called ``session06`` in your student directory.
-Create a branch in your local repo called `task17` and switch to it (`git checkout -b task17`).
-
-Add your files
-to that branch, commit frequently, and push to it as you work,
-writing good commit messages.
-Then create a pull request to the main class repo,
-titled ``Task 17 pull request from Your Name`` where you should substitute your name for ``Your Name``.
-
-Task 18: Investigate Session 7
-------------------------------
-
-Read through the Session 7 slides.
-
-http://codefellows.github.io/sea-c34-python/session07.html
-
-There are five sections. For each one, come up with one question.
-
-* Testing (1 question)
-* Multiple Inheritance (1 question)
-* Properties (1 question)
-* Class and Static Methods (1 question)
-* Special (Magic) Methods (1 question)
-
-Write some
-Python code to answer these questions, one function per question.
-
-For each function, write a good ``docstring`` describing what
-question you are trying to answer.
-
-Put the functions in four separate modules (files) called
-`testing.py`, `multiple.py`, `properties.py`, `static.py`, and
-`special.py` in the
-``session06`` subdirectory of your student directory.
-
-.. nextslide::
-
-That is, you should have seven questions, and seven functions, total,
-spread out across three files.
-
-You may use everything you've learned
-so far as needed (including lists, tuples, slicing, iteration, functions, booleans, printing, modules, assertions, dictionaries,
-sets, exceptions, file reading/writing, paths, lambdas, keyword/variable arguments, comprehensions, and object-oriented programming).
-
-Create a branch in your local repo called `task18` and switch to it (`git checkout task18`).
-
-Add your files
-to that branch, commit and push, then create a pull request to
-the main class repo,
-titled ``Task 18 pull request from Your Name`` where you should substitute your name for ``Your Name``.
-
-Finally, submit your assignment in Canvas by giving the URL of the pull request.

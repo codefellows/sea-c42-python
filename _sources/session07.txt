@@ -14,12 +14,320 @@ Session Seven (Tentative): Testing, More OO
 | Class and Static Methods,
 | Special (Magic) Methods
 
-Subject to Change
-================
+Subclassing/Inheritance
+=======================
 
-This material is subject to change before
-Session Seven on July 6, 2015.
+Inheritance
+-----------
 
+In object-oriented programming (OOP), inheritance is a way to reuse code of
+existing objects, or to establish a subtype from an existing object.
+
+
+Objects are defined by classes, classes can inherit attributes and behavior
+from pre-existing classes called base classes or super classes.
+
+The resulting classes are known as derived classes or subclasses.
+
+(http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29)
+
+Subclassing
+-----------
+
+A subclass "inherits" all the attributes (methods, etc) of the parent class.
+
+You can then change ("override") some or all of the attributes to change the
+behavior.
+
+You can also add new attributes to extend the behavior.
+
+The simplest subclass in Python:
+
+.. code-block:: python
+
+    class A_subclass(The_superclass):
+        pass
+
+``A_subclass``  now has exactly the same behavior as ``The_superclass``
+
+NOTE: when we put ``object`` in there, it means we are deriving from object --
+getting core functionality of all objects.
+
+Overriding attributes
+---------------------
+
+Overriding is as simple as creating a new attribute with the same name:
+
+.. code-block:: python
+
+    class Circle(object):
+        color = "red"
+
+    ...
+
+    class NewCircle(Circle):
+        color = "blue"
+    >>> nc = NewCircle
+    >>> print nc.color
+    blue
+
+
+all the ``self``  instances will have the new attribute.
+
+Overriding methods
+------------------
+
+Same thing, but with methods (remember, a method *is* an attribute in python)
+
+.. code-block:: python
+
+    class Circle(object):
+    ...
+        def grow(self, factor=2):
+            """grows the circle's diameter by factor"""
+            self.diameter = self.diameter * factor
+    ...
+
+    class NewCircle(Circle):
+    ...
+        def grow(self, factor=2):
+            """grows the area by factor..."""
+            self.diameter = self.diameter * math.sqrt(2)
+
+
+all the instances will have the new method
+
+.. nextslide::
+
+A Program Design Suggestion:
+
+    whenever you override a method, the interface of the new method should be
+    the same as the old.  It should take the same parameters, return the same
+    type, and obey the same preconditions and postconditions.
+
+.. nextslide::
+
+A Program Design Suggestion
+
+    If you obey this rule, you will find that any function designed to work
+    with an instance of a superclass, like a Deck, will also work with
+    instances of subclasses like a Hand or PokerHand.  If you violate this
+    rule, your code will collapse like (sorry) a house of cards.
+
+    -- [ThinkPython 18.10]
+
+( Demo of class vs. instance attributes )
+
+
+More on Subclassing
+===================
+
+Overriding ``__init__``
+-----------------------
+
+Wanting or needing to override ``__init__`` is very common
+
+.. rst-class:: build
+.. container::
+
+    You often need to call the super class ``__init__``  as well
+
+    Think "everything the parent does, plus this stuff too"
+
+    .. code-block:: python
+
+        class Circle(object):
+            color = "red"
+            def __init__(self, diameter):
+                self.diameter = diameter
+        ...
+        class CircleR(Circle):
+            def __init__(self, radius):
+                diameter = radius*2
+                Circle.__init__(self, diameter)
+
+    exception to: "don't change the method signature" rule.
+
+More subclassing
+----------------
+
+You can also call the superclass' other methods:
+
+.. code-block:: python
+
+    class Circle(object):
+    ...
+        def get_area(self, diameter):
+            return math.pi * (diameter/2.0)**2
+
+
+    class CircleR2(Circle):
+    ...
+        def get_area(self):
+            return Circle.get_area(self, self.radius*2)
+
+There is nothing special about ``__init__``  except that it gets called
+automatically when you instantiate an instance.
+
+
+When to Subclass
+----------------
+
+.. rst-class:: build
+.. container::
+
+    "Is a" relationship: Subclass/inheritance
+
+    "Has a" relationship: Composition
+
+.. nextslide::
+
+"Is a" vs "Has a"
+
+.. rst-class:: build
+.. container::
+
+    You may have a class that needs to accumulate an arbitrary number of
+    objects.
+
+    A list can do that -- so should you subclass list?
+
+    Ask yourself:
+
+    -- **Is** your class a list (with some extra functionality)?
+
+    or
+
+    -- Does you class **have** a list?
+
+    You only want to subclass list if your class could be used anywhere a list can
+    be used.
+
+Attribute resolution order
+--------------------------
+
+When you access an attribute:
+
+``An_Instance.something``
+
+Python looks for it in this order:
+
+.. rst-class:: build
+
+* Is it an instance attribute?
+* Is it a class attribute?
+* Is it a superclass attribute?
+* Is it a super-superclass attribute?
+* ...
+
+.. rst-class:: build
+.. container::
+
+    It can get more complicated...
+
+    http://www.python.org/getit/releases/2.3/mro/
+
+    http://python-history.blogspot.com/2010/06/method-resolution-order.html
+
+
+What are Python classes, really?
+--------------------------------
+
+Putting aside the OO theory...
+
+.. rst-class:: build
+.. container::
+
+    Python classes are:
+
+    .. rst-class:: build
+
+    * Namespaces
+
+      * One for the class object
+      * One for each instance
+
+    * Attribute resolution order
+    * Auto tacking-on of ``self`` when methods are called
+
+    That's about it -- really!
+
+Type-Based dispatch
+-------------------
+
+You'll see code that looks like this:
+
+.. code-block:: python
+
+      if isinstance(other, A_Class):
+          Do_something_with_other
+      else:
+          Do_something_else
+
+.. rst-class:: build
+.. container::
+
+    Usually better to use "duck typing" (polymorphism)
+
+    But when it's called for:
+
+    .. rst-class:: build
+
+    * ``isinstance()``
+    * ``issubclass()``
+
+.. nextslide::
+
+GvR: "Five Minute Multi- methods in Python":
+
+http://www.artima.com/weblogs/viewpost.jsp?thread=101605
+
+http://www.python.org/getit/releases/2.3/mro/
+
+http://python-history.blogspot.com/2010/06/method-resolution-order.html
+
+
+Wrap Up
+-------
+
+Thinking OO in Python:
+
+.. rst-class:: build
+.. container::
+
+    Think about what makes sense for your code:
+
+    .. rst-class:: build
+
+    * Code re-use
+    * Clean APIs
+    * ...
+
+    Don't be a slave to what OO is *supposed* to look like.
+
+    Let OO work for you, not *create* work for you
+
+.. nextslide:: OO in Python:
+
+.. rst-class:: build
+.. container::
+
+    .. container::
+
+        **The Art of Subclassing**: *Raymond Hettinger*
+
+        http://pyvideo.org/video/879/the-art-of-subclassing
+
+        "classes are for code re-use -- not creating taxonomies"
+
+    .. container::
+
+        **Stop Writing Classes**: *Jack Diederich*
+
+        http://pyvideo.org/video/880/stop-writing-classes
+
+        "If your class has only two methods and one of them is ``__init__``,
+        you don't need a class"
 
 Review/Questions
 ================

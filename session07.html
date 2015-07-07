@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Code Fellows F2 Python, March-April 2015" href="index.html" />
     <link rel="next" title="Session Eight: Generators, Iterators, Decorators, and Context Managers" href="session08.html" />
-    <link rel="prev" title="Session Six (Tentative): Intro to Object Oriented Programming" href="session06.html" />
+    <link rel="prev" title="Session Six: Arguments, Comprehensions, Intro to Object Oriented Programming" href="session06.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -53,7 +53,7 @@
           <a href="session08.html" title="Session Eight: Generators, Iterators, Decorators, and Context Managers"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="session06.html" title="Session Six (Tentative): Intro to Object Oriented Programming"
+          <a href="session06.html" title="Session Six: Arguments, Comprehensions, Intro to Object Oriented Programming"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">F2 Python</a> &raquo;</li> 
       </ul>
@@ -73,10 +73,226 @@
 <div class="line">Class and Static Methods,</div>
 <div class="line">Special (Magic) Methods</div>
 </div>
-<div class="section" id="subject-to-change">
-<h2>Subject to Change<a class="headerlink" href="#subject-to-change" title="Permalink to this headline">¶</a></h2>
-<p>This material is subject to change before
-Session Seven on July 6, 2015.</p>
+<div class="section" id="subclassing-inheritance">
+<h2>Subclassing/Inheritance<a class="headerlink" href="#subclassing-inheritance" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="inheritance">
+<h3>Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this headline">¶</a></h3>
+<p>In object-oriented programming (OOP), inheritance is a way to reuse code of
+existing objects, or to establish a subtype from an existing object.</p>
+<p>Objects are defined by classes, classes can inherit attributes and behavior
+from pre-existing classes called base classes or super classes.</p>
+<p>The resulting classes are known as derived classes or subclasses.</p>
+<p>(<a class="reference external" href="http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29">http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29</a>)</p>
+</div>
+<div class="section" id="subclassing">
+<h3>Subclassing<a class="headerlink" href="#subclassing" title="Permalink to this headline">¶</a></h3>
+<p>A subclass &#8220;inherits&#8221; all the attributes (methods, etc) of the parent class.</p>
+<p>You can then change (&#8220;override&#8221;) some or all of the attributes to change the
+behavior.</p>
+<p>You can also add new attributes to extend the behavior.</p>
+<p>The simplest subclass in Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">A_subclass</span><span class="p">(</span><span class="n">The_superclass</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">A_subclass</span></tt>  now has exactly the same behavior as <tt class="docutils literal"><span class="pre">The_superclass</span></tt></p>
+<p>NOTE: when we put <tt class="docutils literal"><span class="pre">object</span></tt> in there, it means we are deriving from object &#8211;
+getting core functionality of all objects.</p>
+</div>
+<div class="section" id="overriding-attributes">
+<h3>Overriding attributes<a class="headerlink" href="#overriding-attributes" title="Permalink to this headline">¶</a></h3>
+<p>Overriding is as simple as creating a new attribute with the same name:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span>
+
+<span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">NewCircle</span><span class="p">(</span><span class="n">Circle</span><span class="p">):</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;blue&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">NewCircle</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">nc</span><span class="o">.</span><span class="n">color</span>
+<span class="n">blue</span>
+</pre></div>
+</div>
+<p>all the <tt class="docutils literal"><span class="pre">self</span></tt>  instances will have the new attribute.</p>
+</div>
+<div class="section" id="overriding-methods">
+<h3>Overriding methods<a class="headerlink" href="#overriding-methods" title="Permalink to this headline">¶</a></h3>
+<p>Same thing, but with methods (remember, a method <em>is</em> an attribute in python)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="o">...</span>
+    <span class="k">def</span> <span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;grows the circle&#39;s diameter by factor&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">*</span> <span class="n">factor</span>
+<span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">NewCircle</span><span class="p">(</span><span class="n">Circle</span><span class="p">):</span>
+<span class="o">...</span>
+    <span class="k">def</span> <span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;grows the area by factor...&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>all the instances will have the new method</p>
+<p>A Program Design Suggestion:</p>
+<blockquote>
+<div>whenever you override a method, the interface of the new method should be
+the same as the old.  It should take the same parameters, return the same
+type, and obey the same preconditions and postconditions.</div></blockquote>
+<p>A Program Design Suggestion</p>
+<blockquote>
+<div><p>If you obey this rule, you will find that any function designed to work
+with an instance of a superclass, like a Deck, will also work with
+instances of subclasses like a Hand or PokerHand.  If you violate this
+rule, your code will collapse like (sorry) a house of cards.</p>
+<p class="attribution">&mdash;[ThinkPython 18.10]</p>
+</div></blockquote>
+<p>( Demo of class vs. instance attributes )</p>
+</div>
+</div>
+<div class="section" id="more-on-subclassing">
+<h2>More on Subclassing<a class="headerlink" href="#more-on-subclassing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overriding-init">
+<h3>Overriding <tt class="docutils literal"><span class="pre">__init__</span></tt><a class="headerlink" href="#overriding-init" title="Permalink to this headline">¶</a></h3>
+<p>Wanting or needing to override <tt class="docutils literal"><span class="pre">__init__</span></tt> is very common</p>
+<div class="build container">
+<p>You often need to call the super class <tt class="docutils literal"><span class="pre">__init__</span></tt>  as well</p>
+<p>Think &#8220;everything the parent does, plus this stuff too&#8221;</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diameter</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="n">diameter</span>
+<span class="o">...</span>
+<span class="k">class</span> <span class="nc">CircleR</span><span class="p">(</span><span class="n">Circle</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="n">diameter</span> <span class="o">=</span> <span class="n">radius</span><span class="o">*</span><span class="mi">2</span>
+        <span class="n">Circle</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diameter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>exception to: &#8220;don&#8217;t change the method signature&#8221; rule.</p>
+</div>
+</div>
+<div class="section" id="more-subclassing">
+<h3>More subclassing<a class="headerlink" href="#more-subclassing" title="Permalink to this headline">¶</a></h3>
+<p>You can also call the superclass&#8217; other methods:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="o">...</span>
+    <span class="k">def</span> <span class="nf">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diameter</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">diameter</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+
+<span class="k">class</span> <span class="nc">CircleR2</span><span class="p">(</span><span class="n">Circle</span><span class="p">):</span>
+<span class="o">...</span>
+    <span class="k">def</span> <span class="nf">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Circle</span><span class="o">.</span><span class="n">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There is nothing special about <tt class="docutils literal"><span class="pre">__init__</span></tt>  except that it gets called
+automatically when you instantiate an instance.</p>
+</div>
+<div class="section" id="when-to-subclass">
+<h3>When to Subclass<a class="headerlink" href="#when-to-subclass" title="Permalink to this headline">¶</a></h3>
+<div class="build container">
+<p>&#8220;Is a&#8221; relationship: Subclass/inheritance</p>
+<p>&#8220;Has a&#8221; relationship: Composition</p>
+</div>
+<p>&#8220;Is a&#8221; vs &#8220;Has a&#8221;</p>
+<div class="build container">
+<p>You may have a class that needs to accumulate an arbitrary number of
+objects.</p>
+<p>A list can do that &#8211; so should you subclass list?</p>
+<p>Ask yourself:</p>
+<p>&#8211; <strong>Is</strong> your class a list (with some extra functionality)?</p>
+<p>or</p>
+<p>&#8211; Does you class <strong>have</strong> a list?</p>
+<p>You only want to subclass list if your class could be used anywhere a list can
+be used.</p>
+</div>
+</div>
+<div class="section" id="attribute-resolution-order">
+<h3>Attribute resolution order<a class="headerlink" href="#attribute-resolution-order" title="Permalink to this headline">¶</a></h3>
+<p>When you access an attribute:</p>
+<p><tt class="docutils literal"><span class="pre">An_Instance.something</span></tt></p>
+<p>Python looks for it in this order:</p>
+<ul class="build simple">
+<li>Is it an instance attribute?</li>
+<li>Is it a class attribute?</li>
+<li>Is it a superclass attribute?</li>
+<li>Is it a super-superclass attribute?</li>
+<li>...</li>
+</ul>
+<div class="build container">
+<p>It can get more complicated...</p>
+<p><a class="reference external" href="http://www.python.org/getit/releases/2.3/mro/">http://www.python.org/getit/releases/2.3/mro/</a></p>
+<p><a class="reference external" href="http://python-history.blogspot.com/2010/06/method-resolution-order.html">http://python-history.blogspot.com/2010/06/method-resolution-order.html</a></p>
+</div>
+</div>
+<div class="section" id="what-are-python-classes-really">
+<h3>What are Python classes, really?<a class="headerlink" href="#what-are-python-classes-really" title="Permalink to this headline">¶</a></h3>
+<p>Putting aside the OO theory...</p>
+<div class="build container">
+<p>Python classes are:</p>
+<ul class="build simple">
+<li>Namespaces<ul>
+<li>One for the class object</li>
+<li>One for each instance</li>
+</ul>
+</li>
+<li>Attribute resolution order</li>
+<li>Auto tacking-on of <tt class="docutils literal"><span class="pre">self</span></tt> when methods are called</li>
+</ul>
+<p>That&#8217;s about it &#8211; really!</p>
+</div>
+</div>
+<div class="section" id="type-based-dispatch">
+<h3>Type-Based dispatch<a class="headerlink" href="#type-based-dispatch" title="Permalink to this headline">¶</a></h3>
+<p>You&#8217;ll see code that looks like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">A_Class</span><span class="p">):</span>
+    <span class="n">Do_something_with_other</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">Do_something_else</span>
+</pre></div>
+</div>
+<div class="build container">
+<p>Usually better to use &#8220;duck typing&#8221; (polymorphism)</p>
+<p>But when it&#8217;s called for:</p>
+<ul class="build simple">
+<li><tt class="docutils literal"><span class="pre">isinstance()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">issubclass()</span></tt></li>
+</ul>
+</div>
+<p>GvR: &#8220;Five Minute Multi- methods in Python&#8221;:</p>
+<p><a class="reference external" href="http://www.artima.com/weblogs/viewpost.jsp?thread=101605">http://www.artima.com/weblogs/viewpost.jsp?thread=101605</a></p>
+<p><a class="reference external" href="http://www.python.org/getit/releases/2.3/mro/">http://www.python.org/getit/releases/2.3/mro/</a></p>
+<p><a class="reference external" href="http://python-history.blogspot.com/2010/06/method-resolution-order.html">http://python-history.blogspot.com/2010/06/method-resolution-order.html</a></p>
+</div>
+<div class="section" id="wrap-up">
+<h3>Wrap Up<a class="headerlink" href="#wrap-up" title="Permalink to this headline">¶</a></h3>
+<p>Thinking OO in Python:</p>
+<div class="build container">
+<p>Think about what makes sense for your code:</p>
+<ul class="build simple">
+<li>Code re-use</li>
+<li>Clean APIs</li>
+<li>...</li>
+</ul>
+<p>Don&#8217;t be a slave to what OO is <em>supposed</em> to look like.</p>
+<p>Let OO work for you, not <em>create</em> work for you</p>
+</div>
+<div class="build container">
+<div class="container">
+<p><strong>The Art of Subclassing</strong>: <em>Raymond Hettinger</em></p>
+<p><a class="reference external" href="http://pyvideo.org/video/879/the-art-of-subclassing">http://pyvideo.org/video/879/the-art-of-subclassing</a></p>
+<p>&#8220;classes are for code re-use &#8211; not creating taxonomies&#8221;</p>
+</div>
+<div class="container">
+<p><strong>Stop Writing Classes</strong>: <em>Jack Diederich</em></p>
+<p><a class="reference external" href="http://pyvideo.org/video/880/stop-writing-classes">http://pyvideo.org/video/880/stop-writing-classes</a></p>
+<p>&#8220;If your class has only two methods and one of them is <tt class="docutils literal"><span class="pre">__init__</span></tt>,
+you don&#8217;t need a class&#8221;</p>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="review-questions">
 <h2>Review/Questions<a class="headerlink" href="#review-questions" title="Permalink to this headline">¶</a></h2>
@@ -253,8 +469,8 @@ the code that fixes these tests.</p>
 </div>
 </div>
 </div>
-<div class="section" id="more-on-subclassing">
-<h2>More on Subclassing<a class="headerlink" href="#more-on-subclassing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>More on Subclassing<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Watch This Video:</p>
 <p><a class="reference external" href="http://pyvideo.org/video/879/the-art-of-subclassing">http://pyvideo.org/video/879/the-art-of-subclassing</a></p>
 <div class="line-block">
@@ -791,8 +1007,8 @@ some way.</p>
 bit of old-style class definitions, which should not be emulated.</p>
 </div>
 </div>
-<div class="section" id="id1">
-<h3>Kicking the Tires<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>Kicking the Tires<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Extend your &#8220;Circle&#8221; class:</p>
 <ul class="simple">
 <li>Add <tt class="docutils literal"><span class="pre">__str__</span></tt>  and <tt class="docutils literal"><span class="pre">__repr__</span></tt>  methods</li>
@@ -887,7 +1103,23 @@ titled <tt class="docutils literal"><span class="pre">Task</span> <span class="p
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Session Seven (Tentative): Testing, More OO</a><ul>
-<li><a class="reference internal" href="#subject-to-change">Subject to Change</a></li>
+<li><a class="reference internal" href="#subclassing-inheritance">Subclassing/Inheritance</a><ul>
+<li><a class="reference internal" href="#inheritance">Inheritance</a></li>
+<li><a class="reference internal" href="#subclassing">Subclassing</a></li>
+<li><a class="reference internal" href="#overriding-attributes">Overriding attributes</a></li>
+<li><a class="reference internal" href="#overriding-methods">Overriding methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#more-on-subclassing">More on Subclassing</a><ul>
+<li><a class="reference internal" href="#overriding-init">Overriding <tt class="docutils literal"><span class="pre">__init__</span></tt></a></li>
+<li><a class="reference internal" href="#more-subclassing">More subclassing</a></li>
+<li><a class="reference internal" href="#when-to-subclass">When to Subclass</a></li>
+<li><a class="reference internal" href="#attribute-resolution-order">Attribute resolution order</a></li>
+<li><a class="reference internal" href="#what-are-python-classes-really">What are Python classes, really?</a></li>
+<li><a class="reference internal" href="#type-based-dispatch">Type-Based dispatch</a></li>
+<li><a class="reference internal" href="#wrap-up">Wrap Up</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#review-questions">Review/Questions</a><ul>
 <li><a class="reference internal" href="#review-of-previous-class">Review of Previous Class</a></li>
 <li><a class="reference internal" href="#homework-review">Homework review</a></li>
@@ -898,7 +1130,7 @@ titled <tt class="docutils literal"><span class="pre">Task</span> <span class="p
 <li><a class="reference internal" href="#test-runners">Test Runners</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#more-on-subclassing">More on Subclassing</a><ul>
+<li><a class="reference internal" href="#id1">More on Subclassing</a><ul>
 <li><a class="reference internal" href="#what-s-a-subclass-for">What&#8217;s a Subclass For?</a></li>
 <li><a class="reference internal" href="#multiple-inheritance">Multiple Inheritance</a></li>
 <li><a class="reference internal" href="#super-issues">super() issues...</a></li>
@@ -916,7 +1148,7 @@ titled <tt class="docutils literal"><span class="pre">Task</span> <span class="p
 </li>
 <li><a class="reference internal" href="#special-methods">Special Methods</a><ul>
 <li><a class="reference internal" href="#what-s-in-a-name">What&#8217;s in a Name?</a></li>
-<li><a class="reference internal" href="#id1">Kicking the Tires</a></li>
+<li><a class="reference internal" href="#id2">Kicking the Tires</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#homework">Homework</a><ul>
@@ -930,7 +1162,7 @@ titled <tt class="docutils literal"><span class="pre">Task</span> <span class="p
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="session06.html"
-                        title="previous chapter">Session Six (Tentative): Intro to Object Oriented Programming</a></p>
+                        title="previous chapter">Session Six: Arguments, Comprehensions, Intro to Object Oriented Programming</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="session08.html"
                         title="next chapter">Session Eight: Generators, Iterators, Decorators, and Context Managers</a></p>
@@ -961,7 +1193,7 @@ titled <tt class="docutils literal"><span class="pre">Task</span> <span class="p
           <a href="session08.html" title="Session Eight: Generators, Iterators, Decorators, and Context Managers"
              >next</a> |</li>
         <li class="right" >
-          <a href="session06.html" title="Session Six (Tentative): Intro to Object Oriented Programming"
+          <a href="session06.html" title="Session Six: Arguments, Comprehensions, Intro to Object Oriented Programming"
              >previous</a> |</li>
         <li><a href="index.html">F2 Python</a> &raquo;</li> 
       </ul>
